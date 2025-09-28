@@ -51,7 +51,7 @@ const ProductGrid = () => {
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Homemade Products</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Freshly prepared at home with love and care - delivered to your door in just 7 minutes
+            Freshly prepared at home with love and care - delivered to your door in just 10 minutes
           </p>
         </div>
 

@@ -17,7 +17,7 @@ const DeliveryAreas = () => {
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Delivery Areas</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            We currently deliver our homemade delights to select areas with our signature 7-minute service
+            We currently deliver our homemade delights to select areas with our signature 10-minute service
           </p>
         </div>
 
@@ -45,8 +45,11 @@ const DeliveryAreas = () => {
             ))}
           </div>
           
-          <div className="mt-6 p-4 bg-accent/10 rounded-lg text-center">
-            <p className="text-sm text-muted-foreground">
+          <div className="mt-6 p-4 bg-accent/10 rounded-lg">
+            <p className="text-sm text-muted-foreground text-center mb-2">
+              <strong>Service Hours:</strong> 6:00 AM - 9:00 PM | Open 7 Days a Week
+            </p>
+            <p className="text-sm text-muted-foreground text-center">
               More areas coming soon! Stay tuned for expansion updates.
             </p>
           </div>

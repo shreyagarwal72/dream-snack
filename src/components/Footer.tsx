@@ -14,7 +14,7 @@ const Footer = () => {
               <h3 className="text-xl font-bold">Dream Snack</h3>
             </div>
             <p className="text-muted-foreground text-sm">
-              Your favorite homemade snacks and beverages delivered in just 7 minutes. Made with love, delivered with care.
+              Your favorite homemade snacks and beverages delivered in just 10 minutes. Made with love, delivered with care. Open 6 AM - 9 PM daily.
             </p>
           </div>
 
@@ -90,14 +90,14 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Clock className="w-4 h-4" />
-                <span>24/7 Service</span>
+                <span>6:00 AM - 9:00 PM (7 Days)</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p className="mb-2">&copy; 2024 Dream Snack. All rights reserved. | Homemade with Love - 7 Minute Delivery Service</p>
+          <p className="mb-2">&copy; 2024 Dream Snack. All rights reserved. | Homemade with Love - 10 Minute Delivery Service</p>
           <p className="text-xs">
             <span className="font-semibold">Created by:</span> Devansh & Shrey
           </p>

@@ -32,7 +32,11 @@ const Header = () => {
         <div className="flex items-center gap-4">
           <Badge variant="secondary" className="hidden sm:flex items-center gap-1 px-3 py-1">
             <Clock className="w-3 h-3" />
-            <span className="font-semibold">7 Min Delivery</span>
+            <span className="font-semibold">10 Min Delivery</span>
+          </Badge>
+          
+          <Badge className="hidden md:flex items-center gap-1 px-3 py-1 bg-accent/20 text-accent-foreground border-accent/30">
+            <span className="text-xs font-medium">6 AM - 9 PM</span>
           </Badge>
           
           <Button variant="outline" size="icon" className="relative">

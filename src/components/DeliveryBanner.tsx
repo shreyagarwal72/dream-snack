@@ -1,10 +1,15 @@
-import { Timer, CheckCircle, Shield, Truck } from "lucide-react";
+import { Timer, CheckCircle, Shield, Truck, Clock } from "lucide-react";
 
 const features = [
   {
     icon: Timer,
-    title: "7 Minute Delivery",
+    title: "10 Minute Delivery",
     description: "Lightning fast delivery to your doorstep",
+  },
+  {
+    icon: Clock,
+    title: "Open 12/7",
+    description: "6:00 AM to 9:00 PM, Every Day",
   },
   {
     icon: CheckCircle,
@@ -49,7 +54,7 @@ const DeliveryBanner = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {features.map((feature, index) => (
             <div
               key={index}

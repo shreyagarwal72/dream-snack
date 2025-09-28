@@ -28,12 +28,12 @@ const Hero = () => {
               Dream Snack
             </span>
             <br />
-            <span className="text-foreground">7 Min Delivery</span>
+            <span className="text-foreground">10 Min Delivery</span>
           </h1>
           
           <p className="text-xl text-muted-foreground mb-8">
-            Fresh homemade tea, coffee, and delicious snacks delivered to your doorstep in just 7 minutes. 
-            Everything made at home with care and quality ingredients.
+            Fresh homemade tea, coffee, and delicious snacks delivered to your doorstep in just 10 minutes. 
+            Everything made at home with care and quality ingredients. Open daily 6 AM - 9 PM.
           </p>
 
           <div className="flex flex-wrap gap-4 mb-8">
@@ -49,7 +49,7 @@ const Hero = () => {
           <div className="flex flex-wrap gap-6 text-sm">
             <div className="flex items-center gap-2">
               <Timer className="w-5 h-5 text-accent" />
-              <span className="font-medium">7 Min Delivery</span>
+              <span className="font-medium">10 Min Delivery</span>
             </div>
             <div className="flex items-center gap-2">
               <Truck className="w-5 h-5 text-accent" />
