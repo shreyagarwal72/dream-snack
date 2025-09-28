@@ -36,13 +36,6 @@ const Hero = () => {
             Fresh homemade tea, coffee, and delicious snacks delivered to your doorstep in just 10 minutes. 
             Everything made at home with care and quality ingredients. Open daily 6 AM - 9 PM.
           </p>
-          
-          <div className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-primary/20 mb-8">
-            <Info className="w-5 h-5 text-primary" />
-            <p className="text-base font-semibold text-foreground">
-              Homemade means Non-Chemical
-            </p>
-          </div>
 
           <div className="flex flex-wrap gap-4 mb-8">
             <Button size="lg" className="gradient-primary text-primary-foreground hover:shadow-glow transition-all duration-300 group">
