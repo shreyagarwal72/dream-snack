@@ -2,6 +2,7 @@ import { ShoppingCart, Clock, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import logo from "@/assets/logo.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -28,6 +29,9 @@ const Header = () => {
             <a href="#delivery-areas" className="text-foreground/80 hover:text-foreground transition-colors">
               Delivery Areas
             </a>
+            <Link to="/help" className="text-foreground/80 hover:text-foreground transition-colors">
+              Help Center
+            </Link>
           </div>
         </div>
 
