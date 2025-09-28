@@ -1,4 +1,5 @@
 import { Clock, Mail, Phone, MapPin, Info } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -7,10 +8,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 gradient-primary rounded-lg flex items-center justify-center">
-                <Clock className="w-5 h-5 text-primary-foreground" />
-              </div>
+            <div className="flex items-center gap-3 mb-4">
+              <img src={logo} alt="Dream Snack Logo" className="w-10 h-10 rounded-lg" />
               <h3 className="text-xl font-bold">Dream Snack</h3>
             </div>
             <p className="text-muted-foreground text-sm">
