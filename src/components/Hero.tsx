@@ -20,20 +20,20 @@ const Hero = () => {
         <div className="max-w-2xl animate-fade-in">
           <div className="inline-flex items-center gap-2 bg-accent/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
             <Sparkles className="w-4 h-4 text-accent" />
-            <span className="text-sm font-medium">Premium Quality, Lightning Fast</span>
+            <span className="text-sm font-medium">100% Homemade with Love</span>
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             <span className="bg-gradient-to-r from-primary via-primary-glow to-accent bg-clip-text text-transparent">
-              7 Minute
+              Dream Snack
             </span>
             <br />
-            <span className="text-foreground">Snack Delivery</span>
+            <span className="text-foreground">7 Min Delivery</span>
           </h1>
           
           <p className="text-xl text-muted-foreground mb-8">
-            Premium tea, coffee, and healthy snacks delivered to your doorstep in just 7 minutes. 
-            Experience instant satisfaction with every order.
+            Fresh homemade tea, coffee, and delicious snacks delivered to your doorstep in just 7 minutes. 
+            Everything made at home with care and quality ingredients.
           </p>
 
           <div className="flex flex-wrap gap-4 mb-8">
@@ -57,7 +57,7 @@ const Hero = () => {
             </div>
             <div className="flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-accent" />
-              <span className="font-medium">Premium Quality</span>
+              <span className="font-medium">100% Homemade</span>
             </div>
           </div>
         </div>

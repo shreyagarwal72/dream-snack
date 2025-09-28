@@ -9,53 +9,53 @@ import mixedSnacks from "@/assets/mixed-snacks.jpg";
 const products = [
   {
     id: 1,
-    name: "Premium Green Tea",
+    name: "Homemade Green Tea",
     category: "Tea",
-    price: 299,
+    price: 15,
     image: greenTea,
     rating: 5,
     isNew: true,
   },
   {
     id: 2,
-    name: "Artisan Coffee Beans",
+    name: "Fresh Coffee",
     category: "Coffee",
-    price: 449,
+    price: 20,
     image: coffeeBeans,
     rating: 5,
     isBestseller: true,
   },
   {
     id: 3,
-    name: "Fresh Sweetcorn",
+    name: "Sweet Corn",
     category: "Snacks",
-    price: 89,
+    price: 50,
     image: sweetcorn,
     rating: 4,
   },
   {
     id: 4,
-    name: "Black Tea Collection",
+    name: "Special Black Tea",
     category: "Tea",
-    price: 349,
+    price: 15,
     image: blackTea,
     rating: 5,
     isBestseller: true,
   },
   {
     id: 5,
-    name: "Instant Cappuccino",
+    name: "Homemade Cappuccino",
     category: "Coffee",
-    price: 199,
+    price: 20,
     image: cappuccino,
     rating: 4,
     isNew: true,
   },
   {
     id: 6,
-    name: "Mixed Healthy Snacks",
-    category: "Snacks",
-    price: 259,
+    name: "Mixed Snacks Combo",
+    category: "Mixed Products",
+    price: 50,
     image: mixedSnacks,
     rating: 5,
   },
@@ -67,10 +67,10 @@ const ProductGrid = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Featured <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Products</span>
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Homemade Products</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Handpicked selections delivered fresh to your door in just 7 minutes
+            Freshly prepared at home with love and care - delivered to your door in just 7 minutes
           </p>
         </div>
 

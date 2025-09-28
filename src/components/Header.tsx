@@ -12,7 +12,7 @@ const Header = () => {
               <Clock className="w-5 h-5 text-primary-foreground" />
             </div>
             <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              DST Delivery
+              Dream Snack
             </h1>
           </div>
           
@@ -23,8 +23,8 @@ const Header = () => {
             <a href="#categories" className="text-foreground/80 hover:text-foreground transition-colors">
               Categories
             </a>
-            <a href="#about" className="text-foreground/80 hover:text-foreground transition-colors">
-              About
+            <a href="#delivery-areas" className="text-foreground/80 hover:text-foreground transition-colors">
+              Delivery Areas
             </a>
           </div>
         </div>

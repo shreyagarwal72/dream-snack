@@ -3,26 +3,26 @@ import { Coffee, Leaf, Candy, Package } from "lucide-react";
 const categories = [
   {
     icon: Leaf,
-    name: "Premium Tea",
-    count: "15+ varieties",
+    name: "Homemade Tea",
+    count: "₹15 per cup",
     color: "from-green-500 to-green-600",
   },
   {
     icon: Coffee,
-    name: "Artisan Coffee",
-    count: "20+ blends",
+    name: "Fresh Coffee",
+    count: "₹20 per cup",
     color: "from-amber-600 to-amber-700",
   },
   {
     icon: Candy,
-    name: "Healthy Snacks",
-    count: "30+ options",
+    name: "Snacks",
+    count: "₹50 per pack",
     color: "from-purple-500 to-purple-600",
   },
   {
     icon: Package,
-    name: "Combo Packs",
-    count: "10+ deals",
+    name: "Mixed Combos",
+    count: "₹50 per combo",
     color: "from-blue-500 to-blue-600",
   },
 ];
@@ -36,7 +36,7 @@ const Categories = () => {
             Shop by <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Category</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Explore our curated selection of premium beverages and snacks
+            Explore our homemade selection of beverages and snacks - all made fresh at home
           </p>
         </div>
 

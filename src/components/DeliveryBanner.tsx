@@ -9,7 +9,7 @@ const features = [
   {
     icon: CheckCircle,
     title: "Quality Guaranteed",
-    description: "100% fresh and premium products",
+    description: "100% fresh homemade products",
   },
   {
     icon: Shield,
@@ -42,10 +42,10 @@ const DeliveryBanner = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-            Why Choose DST Delivery?
+            Why Choose Dream Snack?
           </h2>
           <p className="text-primary-foreground/80 max-w-2xl mx-auto">
-            Experience the future of snack delivery with our premium service
+            Experience the taste of homemade goodness with our lightning-fast delivery service
           </p>
         </div>
 

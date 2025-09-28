@@ -11,10 +11,10 @@ const Footer = () => {
               <div className="w-8 h-8 gradient-primary rounded-lg flex items-center justify-center">
                 <Clock className="w-5 h-5 text-primary-foreground" />
               </div>
-              <h3 className="text-xl font-bold">DST Delivery</h3>
+              <h3 className="text-xl font-bold">Dream Snack</h3>
             </div>
             <p className="text-muted-foreground text-sm">
-              Your favorite snacks and beverages delivered in just 7 minutes. Premium quality, lightning fast.
+              Your favorite homemade snacks and beverages delivered in just 7 minutes. Made with love, delivered with care.
             </p>
           </div>
 
@@ -38,8 +38,8 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Track Order
+                <a href="#delivery-areas" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Delivery Areas
                 </a>
               </li>
             </ul>
@@ -82,11 +82,11 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Mail className="w-4 h-4" />
-                <span>support@dstdelivery.com</span>
+                <span>dreamsnack@gmail.com</span>
               </li>
-              <li className="flex items-center gap-2 text-muted-foreground">
-                <MapPin className="w-4 h-4" />
-                <span>Mumbai, India</span>
+              <li className="flex items-start gap-2 text-muted-foreground">
+                <MapPin className="w-4 h-4 mt-1 flex-shrink-0" />
+                <span>Serving: Kamla Nagar, Balkeshwar, Adarsh Nagar, Karmyogi</span>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Clock className="w-4 h-4" />
@@ -97,7 +97,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; 2024 DST Delivery. All rights reserved. | 7 Minute Snack Delivery Service</p>
+          <p>&copy; 2024 Dream Snack. All rights reserved. | Homemade with Love - 7 Minute Delivery Service</p>
         </div>
       </div>
     </footer>

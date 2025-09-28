@@ -61,7 +61,6 @@ const ProductCard = ({ name, category, price, image, rating, isNew, isBestseller
         <div className="flex items-center justify-between">
           <div>
             <span className="text-2xl font-bold text-primary">₹{price}</span>
-            <span className="text-sm text-muted-foreground ml-2 line-through">₹{Math.round(price * 1.2)}</span>
           </div>
           <Button 
             size="icon" 
