@@ -4,13 +4,13 @@ const categories = [
   {
     icon: Leaf,
     name: "Homemade Tea",
-    count: "₹10 per cup",
+    count: "₹15 per cup",
     color: "from-green-500 to-green-600",
   },
   {
     icon: Coffee,
     name: "Fresh Coffee",
-    count: "₹10 per cup",
+    count: "₹20 per cup",
     color: "from-amber-600 to-amber-700",
   },
   {
@@ -36,7 +36,7 @@ const Categories = () => {
             Shop by <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Category</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Explore our homemade selection of beverages and snacks - all made fresh at home
+            Explore our homemade Non-Chemical selection of beverages and snacks - all made fresh at home
           </p>
         </div>
 

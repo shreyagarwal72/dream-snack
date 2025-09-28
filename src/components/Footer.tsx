@@ -1,4 +1,4 @@
-import { Clock, Mail, Phone, MapPin } from "lucide-react";
+import { Clock, Mail, Phone, MapPin, Info } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -16,9 +16,12 @@ const Footer = () => {
             <p className="text-muted-foreground text-sm">
               Your favorite homemade snacks and beverages delivered in just 10 minutes. Made with love, delivered with care. Open 6 AM - 9 PM daily.
             </p>
-            <p className="text-sm font-medium text-primary mt-2">
-              Homemade means Non-Chemical
-            </p>
+            <div className="inline-flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-md border border-primary/20 mt-3">
+              <Info className="w-4 h-4 text-primary flex-shrink-0" />
+              <p className="text-sm font-medium text-foreground">
+                Homemade means Non-Chemical
+              </p>
+            </div>
           </div>
 
           {/* Quick Links */}
