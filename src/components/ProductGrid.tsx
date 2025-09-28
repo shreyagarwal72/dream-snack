@@ -1,27 +1,25 @@
 import ProductCard from "./ProductCard";
-import greenTea from "@/assets/green-tea.jpg";
-import coffeeBeans from "@/assets/coffee-beans.jpg";
-import sweetcorn from "@/assets/sweetcorn.jpg";
-import blackTea from "@/assets/black-tea.jpg";
-import cappuccino from "@/assets/cappuccino.jpg";
-import mixedSnacks from "@/assets/mixed-snacks.jpg";
+import indianTea from "@/assets/indian-tea.jpg";
+import indianCoffee from "@/assets/indian-coffee.jpg";
+import indianCorn from "@/assets/indian-corn.jpg";
+import indianSnacks from "@/assets/indian-snacks.jpg";
 
 const products = [
   {
     id: 1,
-    name: "Homemade Green Tea",
+    name: "Homemade Tea",
     category: "Tea",
-    price: 15,
-    image: greenTea,
+    price: 10,
+    image: indianTea,
     rating: 5,
-    isNew: true,
+    isBestseller: true,
   },
   {
     id: 2,
     name: "Fresh Coffee",
     category: "Coffee",
-    price: 20,
-    image: coffeeBeans,
+    price: 10,
+    image: indianCoffee,
     rating: 5,
     isBestseller: true,
   },
@@ -30,34 +28,17 @@ const products = [
     name: "Sweet Corn",
     category: "Snacks",
     price: 50,
-    image: sweetcorn,
+    image: indianCorn,
     rating: 4,
   },
   {
     id: 4,
-    name: "Special Black Tea",
-    category: "Tea",
-    price: 15,
-    image: blackTea,
-    rating: 5,
-    isBestseller: true,
-  },
-  {
-    id: 5,
-    name: "Homemade Cappuccino",
-    category: "Coffee",
-    price: 20,
-    image: cappuccino,
-    rating: 4,
-    isNew: true,
-  },
-  {
-    id: 6,
     name: "Mixed Snacks Combo",
     category: "Mixed Products",
     price: 50,
-    image: mixedSnacks,
+    image: indianSnacks,
     rating: 5,
+    isNew: true,
   },
 ];
 

@@ -4,13 +4,13 @@ const categories = [
   {
     icon: Leaf,
     name: "Homemade Tea",
-    count: "₹15 per cup",
+    count: "₹10 per cup",
     color: "from-green-500 to-green-600",
   },
   {
     icon: Coffee,
     name: "Fresh Coffee",
-    count: "₹20 per cup",
+    count: "₹10 per cup",
     color: "from-amber-600 to-amber-700",
   },
   {

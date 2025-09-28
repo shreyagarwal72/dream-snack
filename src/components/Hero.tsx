@@ -20,7 +20,7 @@ const Hero = () => {
         <div className="max-w-2xl animate-fade-in">
           <div className="inline-flex items-center gap-2 bg-accent/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
             <Sparkles className="w-4 h-4 text-accent" />
-            <span className="text-sm font-medium">100% Homemade with Love</span>
+            <span className="text-sm font-medium">100% Homemade by Devansh & Shrey</span>
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
