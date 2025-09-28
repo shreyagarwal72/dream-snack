@@ -16,6 +16,9 @@ const Footer = () => {
             <p className="text-muted-foreground text-sm">
               Your favorite homemade snacks and beverages delivered in just 10 minutes. Made with love, delivered with care. Open 6 AM - 9 PM daily.
             </p>
+            <p className="text-sm font-medium text-primary mt-2">
+              Homemade means Non-Chemical
+            </p>
           </div>
 
           {/* Quick Links */}
@@ -33,7 +36,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="https://vanshubhai.vercel.app" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
                   About Us
                 </a>
               </li>

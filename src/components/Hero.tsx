@@ -31,9 +31,13 @@ const Hero = () => {
             <span className="text-foreground">10 Min Delivery</span>
           </h1>
           
-          <p className="text-xl text-muted-foreground mb-8">
+          <p className="text-xl text-muted-foreground mb-4">
             Fresh homemade tea, coffee, and delicious snacks delivered to your doorstep in just 10 minutes. 
             Everything made at home with care and quality ingredients. Open daily 6 AM - 9 PM.
+          </p>
+          
+          <p className="text-lg font-semibold text-primary mb-8">
+            Homemade means Non-Chemical
           </p>
 
           <div className="flex flex-wrap gap-4 mb-8">
