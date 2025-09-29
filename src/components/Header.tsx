@@ -44,6 +44,12 @@ const Header = () => {
           <Badge className="hidden md:flex items-center gap-1 px-3 py-1 bg-accent/20 text-accent-foreground border-accent/30">
             <span className="text-xs font-medium">6 AM - 9 PM</span>
           </Badge>
+
+          <Link to="/auth">
+            <Button variant="default" className="hidden sm:flex">
+              Login
+            </Button>
+          </Link>
           
           <Button variant="outline" size="icon" className="relative">
             <ShoppingCart className="w-5 h-5" />
