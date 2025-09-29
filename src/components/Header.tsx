@@ -1,13 +1,38 @@
-import { ShoppingCart, Clock, Menu, X, Home, Package, MapPin, HelpCircle, LogIn } from "lucide-react";
+import { ShoppingCart, Clock, Menu, Home, Package, MapPin, HelpCircle, LogIn, Settings, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import logo from "@/assets/logo.png";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import type { User as SupabaseUser } from "@supabase/supabase-js";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [user, setUser] = useState<SupabaseUser | null>(null);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const getInitials = (name: string) => {
+    return name
+      .split(" ")
+      .map(n => n[0])
+      .join("")
+      .toUpperCase()
+      .slice(0, 2);
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
@@ -34,8 +59,13 @@ const Header = () => {
               Delivery Areas
             </a>
             <Link to="/help" className="text-foreground/80 hover:text-foreground transition-colors">
-              Help Center
+              Help
             </Link>
+            {user && (
+              <Link to="/settings" className="text-foreground/80 hover:text-foreground transition-colors">
+                Settings
+              </Link>
+            )}
           </div>
         </div>
 
@@ -49,11 +79,25 @@ const Header = () => {
             <span className="text-xs font-medium">6 AM - 9 PM</span>
           </Badge>
 
-          <Link to="/auth">
-            <Button variant="default" className="hidden sm:flex">
-              Login
-            </Button>
-          </Link>
+          
+          {user ? (
+            <Link to="/settings">
+              <Button variant="ghost" size="icon" className="hidden sm:flex">
+                <Avatar className="w-8 h-8">
+                  <AvatarImage src={user.user_metadata?.avatar_url} />
+                  <AvatarFallback className="bg-primary text-primary-foreground">
+                    {user.user_metadata?.display_name ? getInitials(user.user_metadata.display_name) : <User className="w-4 h-4" />}
+                  </AvatarFallback>
+                </Avatar>
+              </Button>
+            </Link>
+          ) : (
+            <Link to="/auth">
+              <Button variant="default" className="hidden sm:flex">
+                Login
+              </Button>
+            </Link>
+          )}
           
           <Button variant="outline" size="icon" className="relative">
             <ShoppingCart className="w-5 h-5" />
@@ -108,17 +152,40 @@ const Header = () => {
                 <Link to="/help" onClick={() => setMobileMenuOpen(false)}>
                   <Button variant="ghost" className="w-full justify-start gap-2">
                     <HelpCircle className="w-4 h-4" />
-                    Help Center
+                    Help
                   </Button>
                 </Link>
                 
-                <div className="border-t pt-4 mt-4">
-                  <Link to="/auth" onClick={() => setMobileMenuOpen(false)}>
-                    <Button className="w-full gap-2">
-                      <LogIn className="w-4 h-4" />
-                      Login / Sign Up
+                {user && (
+                  <Link to="/settings" onClick={() => setMobileMenuOpen(false)}>
+                    <Button variant="ghost" className="w-full justify-start gap-2">
+                      <Settings className="w-4 h-4" />
+                      Settings
                     </Button>
                   </Link>
+                )}
+                
+                <div className="border-t pt-4 mt-4">
+                  {user ? (
+                    <Link to="/settings" onClick={() => setMobileMenuOpen(false)}>
+                      <Button variant="outline" className="w-full gap-2">
+                        <Avatar className="w-5 h-5">
+                          <AvatarImage src={user.user_metadata?.avatar_url} />
+                          <AvatarFallback className="bg-primary text-primary-foreground text-xs">
+                            {user.user_metadata?.display_name ? getInitials(user.user_metadata.display_name) : <User className="w-3 h-3" />}
+                          </AvatarFallback>
+                        </Avatar>
+                        My Account
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Link to="/auth" onClick={() => setMobileMenuOpen(false)}>
+                      <Button className="w-full gap-2">
+                        <LogIn className="w-4 h-4" />
+                        Login / Sign Up
+                      </Button>
+                    </Link>
+                  )}
                 </div>
                 
                 <div className="mt-4 space-y-2">
