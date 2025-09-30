@@ -2,7 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
-import { Shield, Eye, Download, Trash2, Mail, Package } from "lucide-react";
+import { Shield, Eye, Download, Trash2, Mail, Package, MessageSquare } from "lucide-react";
 import { toast } from "sonner";
 import { useEffect, useState } from "react";
 import {
