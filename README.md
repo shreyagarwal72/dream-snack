@@ -5,7 +5,7 @@
   
   ### Fresh Homemade Food in Just 10 Minutes!
   
-  [![Made with Love](https://img.shields.io/badge/Made%20with-❤️-red.svg)](https://dreamsnack.com)
+  [![Made with Love](https://img.shields.io/badge/Made%20with-❤️-red.svg)](https://dream-snack.vercel.app)
   [![Delivery Time](https://img.shields.io/badge/Delivery-10%20Minutes-green.svg)](https://dreamsnack.com)
   [![Service Hours](https://img.shields.io/badge/Hours-6AM--9PM-blue.svg)](https://dreamsnack.com)
   [![Service Days](https://img.shields.io/badge/Service-7%20Days-orange.svg)](https://dreamsnack.com)
@@ -102,7 +102,7 @@ We currently serve the following areas with our 10-minute delivery promise:
 
 - **Phone**: [+91 9412104618](tel:+919412104618)
 - **Email**: [sanjayvansu1973@gmail.com](mailto:sanjayvansu1973@gmail.com)
-- **Website**: [Dream Snack](https://dreamsnack.com)
+- **Website**: [Dream Snack](https://dream-snack.vercel.app)
 - **About Us**: [vanshubhai.vercel.app](https://vanshubhai.vercel.app)
 
 ---
@@ -215,7 +215,7 @@ dream-snack/
 
 ## 📜 License
 
-© 2024 Dream Snack. All rights reserved.
+© 2025 Nextup Studio. All rights reserved.
 
 Created with ❤️ by **Devansh & Shrey**
 
@@ -227,6 +227,6 @@ Created with ❤️ by **Devansh & Shrey**
   
   **Homemade means Non-Chemical**
   
-  [Order Now](https://dreamsnack.com) | [About Us](https://vanshubhai.vercel.app)
+  [Order Now](https://dream-snack.vercel.app) | [About Us](https://vanshubhai.vercel.app)
   
 </div>
