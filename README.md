@@ -32,6 +32,16 @@ Every product is crafted with love in our home kitchen using only natural ingred
 - 💰 **Affordable Prices**: Starting from just ₹15
 - 🕐 **Extended Hours**: 6:00 AM to 9:00 PM service
 - 📅 **Daily Service**: Open 7 days a week
+- 🔐 **User Authentication**: Secure login and signup with email/password
+- ⚙️ **Comprehensive Settings**: 
+  - Profile management with display name customization
+  - Theme preferences (Light/Dark/System modes)
+  - Multi-language support (7 languages)
+  - Notification controls (Email, Push, SMS)
+  - Privacy settings and data management
+  - Multiple delivery addresses management
+  - Account security with password change
+  - Data export and local storage management
 
 ---
 
@@ -105,7 +115,11 @@ This website is built with modern web technologies for optimal performance:
 - **Styling**: Tailwind CSS
 - **Build Tool**: Vite
 - **UI Components**: Shadcn/ui
+- **Authentication**: Supabase Auth
 - **Icons**: Lucide React
+- **Routing**: React Router v6
+- **State Management**: React Hooks
+- **Notifications**: Sonner
 - **SEO**: Fully optimized with meta tags and structured data
 
 ---
