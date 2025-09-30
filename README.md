@@ -6,9 +6,9 @@
   ### Fresh Homemade Food in Just 10 Minutes!
   
   [![Made with Love](https://img.shields.io/badge/Made%20with-❤️-red.svg)](https://dream-snack.vercel.app)
-  [![Delivery Time](https://img.shields.io/badge/Delivery-10%20Minutes-green.svg)](https://dreamsnack.com)
+  [![Delivery Time](https://img.shields.io/badge/Delivery-10%20Minutes-green.svg)](https://dream-snack.vercel.app
   [![Service Hours](https://img.shields.io/badge/Hours-6AM--9PM-blue.svg)](https://dreamsnack.com)
-  [![Service Days](https://img.shields.io/badge/Service-7%20Days-orange.svg)](https://dreamsnack.com)
+  [![Service Days](https://img.shields.io/badge/Service-7%20Days-orange.svg)](https://dream-snack.vercel.app)
 </div>
 
 ---
