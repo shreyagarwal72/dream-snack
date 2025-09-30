@@ -93,10 +93,10 @@ const ThemeSection = () => {
             Language
           </Label>
           <Select value={language} onValueChange={handleLanguageChange}>
-            <SelectTrigger id="language">
+            <SelectTrigger id="language" className="bg-background">
               <SelectValue placeholder="Select language" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-background border border-border z-50">
               <SelectItem value="en">English</SelectItem>
               <SelectItem value="hi">हिन्दी (Hindi)</SelectItem>
               <SelectItem value="es">Español (Spanish)</SelectItem>

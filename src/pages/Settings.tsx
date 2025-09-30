@@ -61,13 +61,13 @@ const Settings = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Header />
       
-      <main className="container mx-auto px-4 py-8 max-w-4xl">
+      <main className="container mx-auto px-4 py-8 max-w-6xl flex-1">
         <div className="mb-6">
           <Link to="/">
-            <Button variant="ghost" className="gap-2">
+            <Button variant="ghost" className="gap-2 hover:bg-accent">
               <ArrowLeft className="w-4 h-4" />
               Back to Home
             </Button>
@@ -83,13 +83,25 @@ const Settings = () => {
           </div>
 
           <Tabs defaultValue="profile" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-2 md:grid-cols-6">
-              <TabsTrigger value="profile">Profile</TabsTrigger>
-              <TabsTrigger value="theme">Theme</TabsTrigger>
-              <TabsTrigger value="notifications">Notifications</TabsTrigger>
-              <TabsTrigger value="privacy">Privacy</TabsTrigger>
-              <TabsTrigger value="addresses">Addresses</TabsTrigger>
-              <TabsTrigger value="account">Account</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-3 md:grid-cols-6 gap-1 h-auto">
+              <TabsTrigger value="profile" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                Profile
+              </TabsTrigger>
+              <TabsTrigger value="theme" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                Theme
+              </TabsTrigger>
+              <TabsTrigger value="notifications" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                Notifications
+              </TabsTrigger>
+              <TabsTrigger value="privacy" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                Privacy
+              </TabsTrigger>
+              <TabsTrigger value="addresses" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                Addresses
+              </TabsTrigger>
+              <TabsTrigger value="account" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                Account
+              </TabsTrigger>
             </TabsList>
 
             <TabsContent value="profile" className="space-y-6">
