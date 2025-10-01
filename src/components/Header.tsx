@@ -52,12 +52,6 @@ const Header = () => {
             <Link to="/menu" className="text-foreground/80 hover:text-foreground transition-colors">
               Menu
             </Link>
-            <a href="#products" className="text-foreground/80 hover:text-foreground transition-colors">
-              Products
-            </a>
-            <a href="#categories" className="text-foreground/80 hover:text-foreground transition-colors">
-              Categories
-            </a>
             <a href="#delivery-areas" className="text-foreground/80 hover:text-foreground transition-colors">
               Delivery Areas
             </a>
@@ -149,20 +143,6 @@ const Header = () => {
                     Menu
                   </Button>
                 </Link>
-                
-                <a href="#products" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start gap-2">
-                    <Package className="w-4 h-4" />
-                    Products
-                  </Button>
-                </a>
-                
-                <a href="#categories" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start gap-2">
-                    <Package className="w-4 h-4" />
-                    Categories
-                  </Button>
-                </a>
                 
                 <a href="#delivery-areas" onClick={() => setMobileMenuOpen(false)}>
                   <Button variant="ghost" className="w-full justify-start gap-2">
