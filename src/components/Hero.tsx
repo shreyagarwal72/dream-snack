@@ -45,7 +45,7 @@ const Hero = () => {
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Link to="/orders">
+            <Link to="/menu">
               <Button size="lg" variant="outline" className="backdrop-blur-sm">
                 View Menu
               </Button>

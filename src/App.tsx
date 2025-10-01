@@ -9,6 +9,7 @@ import HelpCenter from "./pages/HelpCenter";
 import Auth from "./pages/Auth";
 import Settings from "./pages/Settings";
 import Orders from "./pages/Orders";
+import Menu from "./pages/Menu";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/menu" element={<Menu />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/help" element={<HelpCenter />} />

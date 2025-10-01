@@ -49,6 +49,9 @@ const Header = () => {
           </div>
           
           <div className="hidden md:flex items-center gap-6">
+            <Link to="/menu" className="text-foreground/80 hover:text-foreground transition-colors">
+              Menu
+            </Link>
             <a href="#products" className="text-foreground/80 hover:text-foreground transition-colors">
               Products
             </a>
@@ -130,6 +133,20 @@ const Header = () => {
                   <Button variant="ghost" className="w-full justify-start gap-2">
                     <Home className="w-4 h-4" />
                     Home
+                  </Button>
+                </Link>
+                
+                <Link to="/menu" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start gap-2">
+                    <Package className="w-4 h-4" />
+                    Menu
+                  </Button>
+                </Link>
+                
+                <Link to="/menu" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start gap-2">
+                    <Package className="w-4 h-4" />
+                    Menu
                   </Button>
                 </Link>
                 
