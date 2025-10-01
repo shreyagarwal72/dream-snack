@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Timer, Truck, Sparkles, Info } from "lucide-react";
+import { ArrowRight, Timer, Truck, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-delivery.jpg";
 
 const Hero = () => {
@@ -38,13 +39,17 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-wrap gap-4 mb-8">
-            <Button size="lg" className="gradient-primary text-primary-foreground hover:shadow-glow transition-all duration-300 group">
-              Order Now
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button size="lg" variant="outline" className="backdrop-blur-sm">
-              View Menu
-            </Button>
+            <Link to="/orders">
+              <Button size="lg" className="gradient-primary text-primary-foreground hover:shadow-glow transition-all duration-300 group">
+                Order Now
+                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+            <Link to="/orders">
+              <Button size="lg" variant="outline" className="backdrop-blur-sm">
+                View Menu
+              </Button>
+            </Link>
           </div>
 
           <div className="flex flex-wrap gap-6 text-sm">

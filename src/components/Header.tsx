@@ -1,4 +1,4 @@
-import { ShoppingCart, Clock, Menu, Home, Package, MapPin, HelpCircle, LogIn, Settings, User } from "lucide-react";
+import { ShoppingCart, Clock, Menu, Home, Package, MapPin, HelpCircle, LogIn, Settings, User, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -58,6 +58,11 @@ const Header = () => {
             <a href="#delivery-areas" className="text-foreground/80 hover:text-foreground transition-colors">
               Delivery Areas
             </a>
+            {user && (
+              <Link to="/orders" className="text-foreground/80 hover:text-foreground transition-colors">
+                Orders
+              </Link>
+            )}
             <Link to="/help" className="text-foreground/80 hover:text-foreground transition-colors">
               Help
             </Link>
@@ -148,6 +153,15 @@ const Header = () => {
                     Delivery Areas
                   </Button>
                 </a>
+                
+                {user && (
+                  <Link to="/orders" onClick={() => setMobileMenuOpen(false)}>
+                    <Button variant="ghost" className="w-full justify-start gap-2">
+                      <ShoppingBag className="w-4 h-4" />
+                      Orders
+                    </Button>
+                  </Link>
+                )}
                 
                 <Link to="/help" onClick={() => setMobileMenuOpen(false)}>
                   <Button variant="ghost" className="w-full justify-start gap-2">
