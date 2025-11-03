@@ -1,4 +1,4 @@
-# 🍵 Dream Snack - Homemade Food Delivery Service
+# 🍵 Dream Snack — Homemade Food Delivery Service
 
 <div align="center">
   <img src="src/assets/logo.png" alt="Dream Snack Logo" width="150" height="150">
@@ -6,227 +6,244 @@
   ### Fresh Homemade Food in Just 10 Minutes!
   
   [![Made with Love](https://img.shields.io/badge/Made%20with-❤️-red.svg)](https://dream-snack.vercel.app)
-  [![Delivery Time](https://img.shields.io/badge/Delivery-10%20Minutes-green.svg)](https://dream-snack.vercel.app)
+  [![Delivery Time](https://img.shields.io/badge/Delivery-10%20Minutes-brightgreen.svg)](https://dream-snack.vercel.app)
   [![Service Hours](https://img.shields.io/badge/Hours-6AM--9PM-blue.svg)](https://dream-snack.vercel.app)
   [![Service Days](https://img.shields.io/badge/Service-7%20Days-orange.svg)](https://dream-snack.vercel.app)
 </div>
 
 ---
 
+## 🧩 Repository Info
+
+[![Live Website](https://img.shields.io/badge/Live_Site-dream--snack.vercel.app-blue?logo=vercel)](https://dream-snack.vercel.app)
+[![License](https://img.shields.io/badge/License-Proprietary-red.svg)](#-license)
+[![React](https://img.shields.io/badge/Frontend-React_18-61dafb?logo=react&logoColor=white)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/Language-TypeScript-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![TailwindCSS](https://img.shields.io/badge/Style-TailwindCSS-06b6d4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Vite](https://img.shields.io/badge/Build-Vite-646cff?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Supabase](https://img.shields.io/badge/Backend-Supabase-3ecf8e?logo=supabase&logoColor=white)](https://supabase.com/)
+
+<!-- GitHub Stats -->
+[![Stars](https://img.shields.io/github/stars/shreyagarwal72/dreams?style=social)](https://github.com/shreyagarwal72/dreams/stargazers)
+[![Forks](https://img.shields.io/github/forks/shreyagarwal72/dreams?style=social)](https://github.com/shreyagarwal72/dreams/network/members)
+[![Issues](https://img.shields.io/github/issues/shreyagarwal72/dreams?color=yellow)](https://github.com/shreyagarwal72/dreams/issues)
+[![Last Commit](https://img.shields.io/github/last-commit/shreyagarwal72/dreams?color=brightgreen)](https://github.com/shreyagarwal72/dreams/commits/main)
+
+---
+
 ## 🌟 About Dream Snack
 
-Dream Snack is a revolutionary homemade food delivery service that brings authentic, non-chemical tea, coffee, and snacks right to your doorstep in just **10 minutes**. Founded by **Devansh & Shrey**, we pride ourselves on delivering fresh, homemade quality that reminds you of home.
+**Dream Snack** is a homemade food delivery service that delivers **authentic**, **non-chemical**, and **freshly prepared** tea, coffee, and snacks — all within **10 minutes**!  
 
-### 💚 Our Promise: Homemade means Non-Chemical
+Founded by **Devansh & Shrey**, Dream Snack brings the warmth of *home-cooked food* to your doorstep with the speed and convenience of modern delivery.
 
-Every product is crafted with love in our home kitchen using only natural ingredients - no preservatives, no chemicals, just pure homemade goodness.
+### 💚 Our Promise: Homemade Means Non-Chemical
+Every cup and snack is crafted using **natural ingredients** —  
+❌ No preservatives  
+❌ No artificial flavoring  
+✅ Just pure, homemade love ❤️
 
 ---
 
 ## 🚀 Features
 
-- ⚡ **Lightning Fast Delivery**: 10-minute delivery guarantee
-- 🏠 **100% Homemade**: Prepared fresh in our home kitchen
-- 🌿 **Non-Chemical**: No preservatives or artificial ingredients
-- 📱 **Easy Ordering**: Simple and intuitive web interface
-- 💰 **Affordable Prices**: Starting from just ₹15
-- 🕐 **Extended Hours**: 6:00 AM to 9:00 PM service
-- 📅 **Daily Service**: Open 7 days a week
-- 🔐 **User Authentication**: Secure login and signup with email/password
-- ⚙️ **Comprehensive Settings**: 
-  - Profile management with display name customization
-  - Theme preferences (Light/Dark/System modes)
-  - Multi-language support (7 languages)
-  - Notification controls (Email, Push, SMS)
-  - Privacy settings and data management
-  - Multiple delivery addresses management
-  - Account security with password change
-  - Data export and local storage management
+- ⚡ **10-Minute Delivery Guarantee**  
+- 🏠 **100% Homemade & Freshly Prepared**  
+- 🌿 **Completely Non-Chemical**  
+- 📱 **Easy-to-use Web Interface**  
+- 💰 **Affordable Pricing** (starting at ₹15)  
+- 🕐 **Operating Hours:** 6:00 AM – 9:00 PM  
+- 📅 **Open 7 Days a Week**  
+- 🔐 **User Authentication (Supabase)**  
+- ⚙️ **Comprehensive User Settings:**
+  - Profile customization  
+  - Theme modes (Light/Dark/System)  
+  - Multi-language support (7+ languages)  
+  - Delivery address management  
+  - Notification preferences (Email, Push, SMS)  
+  - Privacy controls & data export  
 
 ---
 
 ## 🍽️ Our Menu
 
 ### ☕ Beverages
-- **Homemade Tea** - ₹15
-  - Freshly brewed with premium tea leaves
-  - Traditional Indian preparation
-  
-- **Fresh Coffee** - ₹20
-  - Rich aromatic blend
-  - Made from quality coffee beans
+| Item | Price | Description |
+|------|--------|-------------|
+| **Homemade Tea** | ₹15 | Traditional Indian tea brewed with premium leaves |
+| **Fresh Coffee** | ₹20 | Rich aroma, freshly ground beans |
 
 ### 🍿 Snacks
-- **Sweet Corn** - ₹50
-  - Perfectly seasoned
-  - Fresh and crunchy
-  
-- **Mixed Snacks Combo** - ₹50
-  - Variety of homemade snacks
-  - Perfect for sharing
+| Item | Price | Description |
+|------|--------|-------------|
+| **Sweet Corn** | ₹50 | Perfectly seasoned, crunchy, and healthy |
+| **Mixed Snack Combo** | ₹50 | Variety of homemade snacks perfect for sharing |
 
 ---
 
 ## 📍 Delivery Areas
 
-We currently serve the following areas with our 10-minute delivery promise:
+🏘️ **Kamla Nagar**  
+🏘️ **Balkeshwar**  
+🏘️ **Adarsh Nagar**  
+🏘️ **Karmyogi**
 
-- 🏘️ **Kamla Nagar**
-- 🏘️ **Balkeshwar**
-- 🏘️ **Adarsh Nagar**
-- 🏘️ **Karmyogi**
-
-*More areas coming soon!*
+> 🚗 *More areas coming soon!*
 
 ---
 
-## 🕐 Service Information
+## 🕐 Service Details
 
 | Service | Details |
-|---------|---------|
-| **Operating Hours** | 6:00 AM - 9:00 PM |
-| **Days** | Monday to Sunday (7 Days) |
-| **Delivery Time** | 10 Minutes Guaranteed |
-| **Delivery Fee** | FREE |
-| **Minimum Order** | No Minimum |
+|----------|----------|
+| 🕓 **Operating Hours** | 6:00 AM – 9:00 PM |
+| 📅 **Days** | Monday – Sunday |
+| ⚡ **Delivery Time** | 10 Minutes Guaranteed |
+| 🚚 **Delivery Fee** | Free |
+| 💵 **Minimum Order** | None |
 
 ---
 
 ## 👥 Meet the Founders
 
-**Devansh & Shrey** - Two passionate food enthusiasts who believe in bringing the authentic taste of homemade food to your doorstep. Our mission is to provide healthy, chemical-free alternatives to conventional fast food.
-
----
-
-## 📞 Contact Information
-
-- **Phone**: [+91 9412104618](tel:+919412104618)
-- **Email**: [sanjayvansu1973@gmail.com](mailto:sanjayvansu1973@gmail.com)
-- **Website**: [Dream Snack](https://dream-snack.vercel.app)
-- **About Us**: [vanshubhai.vercel.app](https://vanshubhai.vercel.app)
+**Devansh & Shrey** — two passionate food lovers on a mission to bring the **authentic taste of homemade food** to your door.  
+Their goal is simple: **Healthy, fast, affordable, and chemical-free snacks for everyone.**
 
 ---
 
 ## 💻 Technology Stack
 
-This website is built with modern web technologies for optimal performance:
-
-- **Frontend**: React + TypeScript
-- **Styling**: Tailwind CSS
-- **Build Tool**: Vite
-- **UI Components**: Shadcn/ui
-- **Authentication**: Supabase Auth
-- **Icons**: Lucide React
-- **Routing**: React Router v6
-- **State Management**: React Hooks
-- **Notifications**: Sonner
-- **SEO**: Fully optimized with meta tags and structured data
-
----
-
-## 🎯 Our Values
-
-1. **Quality First**: We never compromise on the quality of ingredients
-2. **Health Conscious**: 100% Non-Chemical, preservative-free food
-3. **Customer Satisfaction**: Your happiness is our priority
-4. **Punctuality**: 10-minute delivery or we make it right
-5. **Transparency**: What you see is what you get
+| Category | Technologies |
+|-----------|--------------|
+| **Frontend** | React 18 + TypeScript |
+| **Styling** | Tailwind CSS |
+| **Build Tool** | Vite |
+| **UI Components** | [shadcn/ui](https://ui.shadcn.com/) |
+| **Backend & Auth** | Supabase |
+| **Icons** | [Lucide React](https://lucide.dev/) |
+| **Routing** | React Router v6 |
+| **State Management** | React Hooks |
+| **Notifications** | Sonner |
+| **SEO** | Meta tags + JSON-LD structured data |
 
 ---
 
-## 🚀 Getting Started (For Developers)
+## 🎯 Core Values
 
-### Prerequisites
-- Node.js (v18 or higher)
-- npm or yarn
+1. 🥇 **Quality First** – Only the best homemade ingredients  
+2. 🌱 **Health Conscious** – 100% preservative-free food  
+3. 😊 **Customer Happiness** – Every meal made with care  
+4. ⏱️ **Punctuality** – Guaranteed on-time delivery  
+5. 🔍 **Transparency** – Honest ingredients, honest service  
 
-### Installation
+---
+
+## 🧑‍💻 Developer Setup
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/dream-snack.git
+git clone https://github.com/shreyagarwal72/dreams.git
 
-# Navigate to project directory
-cd dream-snack
+# Navigate into the project
+cd dreams
 
 # Install dependencies
 npm install
 
-# Start development server
+# Start the local development server
 npm run dev
 
 # Build for production
 npm run build
-```
 
-### Project Structure
 
-```
-dream-snack/
+---
+
+📁 Project Structure
+
+dreams/
 ├── src/
 │   ├── assets/         # Images and static files
-│   ├── components/     # React components
-│   │   ├── ui/        # Reusable UI components
+│   ├── components/     # Reusable UI components
+│   │   ├── ui/        # shadcn/ui components
 │   │   └── ...        # Feature components
-│   ├── pages/         # Page components
-│   └── main.tsx       # Application entry point
-├── public/            # Public assets
-├── index.html         # HTML template
-└── README.md          # Project documentation
-```
+│   ├── pages/          # Page components (Home, Menu, About)
+│   └── main.tsx        # Entry point
+├── public/             # Public assets
+├── index.html          # Base HTML template
+└── README.md           # Documentation
+
 
 ---
 
-## 🌟 Why Choose Dream Snack?
+🌟 Why Choose Dream Snack?
 
-### For Customers
-- ✅ Fastest delivery in town (10 minutes)
-- ✅ Homemade quality you can trust
-- ✅ Affordable prices
-- ✅ No chemicals or preservatives
-- ✅ Fresh preparation for every order
+For Customers
 
-### For the Community
-- 🤝 Supporting local business
-- 🌱 Promoting healthy eating habits
-- 💚 Environmentally conscious packaging
-- 👨‍👩‍👧‍👦 Family-friendly service
+✅ Lightning-fast delivery (under 10 minutes)
 
----
+✅ Homemade taste, every single time
 
-## 📈 Future Plans
+✅ Affordable pricing
 
-- 🆕 Expanding delivery areas
-- 🍽️ Adding more homemade delicacies
-- 📱 Mobile app development
-- 🎁 Loyalty program for regular customers
-- 🌍 Sustainable packaging initiatives
+✅ 100% natural ingredients
 
----
 
-## 🏆 Achievements
+For the Community
 
-- 🌟 100% Customer Satisfaction Rate
-- ⚡ Average Delivery Time: Under 10 Minutes
-- 💯 Zero Chemical Policy Maintained
-- 🎯 Serving 4+ Areas Successfully
+🤝 Supporting local business
+
+🌿 Promoting healthy eating habits
+
+💚 Eco-friendly, minimal packaging
+
+👨‍👩‍👧‍👦 Family-run with love
+
+
 
 ---
 
-## 📜 License
+📈 Future Goals
 
-© 2025 Nextup Studio. All rights reserved.
+🌍 Expand delivery zones
 
-Created with ❤️ by **Devansh & Shrey**
+🧁 Add more homemade delicacies
+
+📱 Launch Dream Snack mobile app
+
+🎁 Loyalty & referral programs
+
+🌱 100% sustainable packaging
+
+
 
 ---
 
-<div align="center">
-  
-  ### 🍵 Dream Snack - Where Every Bite Feels Like Home! 🍵
-  
-  **Homemade means Non-Chemical**
-  
-  [Order Now](https://dream-snack.vercel.app) | [About Us](https://vanshubhai.vercel.app)
-  
-</div>
+🏆 Achievements
+
+🌟 100% Customer Satisfaction
+
+⚡ Average Delivery Time: Under 10 Minutes
+
+💯 Zero Chemical Policy maintained
+
+🎯 Successfully serving 4+ areas
+
+
+
+---
+
+📞 Contact Us
+
+📧 Email: sanjayvansu1973@gmail.com
+📞 Phone: +91 9412104618
+🌐 Website: dream-snack.vercel.app
+🎥 About Vanshu: vanshubhai.vercel.app
+
+
+---
+
+📜 License
+
+© 2025 Nextup Studio / Dream Snack. All Rights Reserved.
+All branding, content, and assets are proprietary and may not be used without permission.
