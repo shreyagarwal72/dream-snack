@@ -24,10 +24,10 @@
 [![Supabase](https://img.shields.io/badge/Backend-Supabase-3ecf8e?logo=supabase&logoColor=white)](https://supabase.com/)
 
 <!-- GitHub Stats -->
-[![Stars](https://img.shields.io/github/stars/shreyagarwal72/dreams?style=social)](https://github.com/shreyagarwal72/dreams/stargazers)
-[![Forks](https://img.shields.io/github/forks/shreyagarwal72/dreams?style=social)](https://github.com/shreyagarwal72/dreams/network/members)
-[![Issues](https://img.shields.io/github/issues/shreyagarwal72/dreams?color=yellow)](https://github.com/shreyagarwal72/dreams/issues)
-[![Last Commit](https://img.shields.io/github/last-commit/shreyagarwal72/dreams?color=brightgreen)](https://github.com/shreyagarwal72/dreams/commits/main)
+[![Stars](https://img.shields.io/github/stars/shreyagarwal72/dream-snack?style=social)](https://github.com/shreyagarwal72/dream-snack/stargazers)
+[![Forks](https://img.shields.io/github/forks/shreyagarwal72/dream-snack?style=social)](https://github.com/shreyagarwal72/dream-snack/network/members)
+[![Issues](https://img.shields.io/github/issues/shreyagarwal72/dreams?color=yellow)](https://github.com/shreyagarwal72/dream-snack/issues)
+[![Last Commit](https://img.shields.io/github/last-commit/shreyagarwal72/dreams?color=brightgreen)](https://github.com/shreyagarwal72/dream-snack/commits/main)
 
 ---
 
