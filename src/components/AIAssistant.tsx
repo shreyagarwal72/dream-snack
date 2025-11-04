@@ -141,9 +141,9 @@ export const AIAssistant = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="fixed bottom-6 right-6 w-[380px] h-[600px] shadow-2xl z-50 flex flex-col">
+        <Card className="fixed bottom-0 right-0 md:bottom-6 md:right-6 w-full h-full md:w-[400px] md:h-[600px] md:rounded-lg shadow-2xl z-50 flex flex-col">
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b bg-primary text-primary-foreground rounded-t-lg">
+          <div className="flex items-center justify-between p-4 border-b bg-primary text-primary-foreground md:rounded-t-lg">
             <div className="flex items-center gap-2">
               <MessageCircle className="h-5 w-5" />
               <div>
@@ -231,7 +231,7 @@ export const AIAssistant = () => {
               </Button>
             </form>
             <p className="text-xs text-muted-foreground mt-2 text-center">
-              Powered by Lovable AI • Free Gemini models
+              Powered by AI • Dream Snack Assistant
             </p>
           </div>
         </Card>
