@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -199,6 +200,11 @@ const Orders = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Order Now - Dream Snack | Fresh Homemade Food Delivery</title>
+        <meta name="description" content="Place your order for fresh homemade food. Choose from our menu of beverages, snacks, and sweets. Fast 10-minute delivery. Cash on delivery available." />
+        <meta name="keywords" content="order food online, homemade food order, online food delivery, fast delivery, cash on delivery" />
+      </Helmet>
       <Header />
       
       <main className="container mx-auto px-4 py-8">

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -44,6 +45,11 @@ const Menu = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Menu - Dream Snack | Homemade Beverages, Snacks & Sweets</title>
+        <meta name="description" content="Browse our menu of fresh homemade tea, coffee, snacks, and sweets. All products made with love and care at home. Fast 10-minute delivery." />
+        <meta name="keywords" content="homemade menu, tea menu, coffee menu, snacks menu, Indian sweets, beverages, food delivery menu" />
+      </Helmet>
       <Header />
       
       <main className="container mx-auto px-4 py-8">

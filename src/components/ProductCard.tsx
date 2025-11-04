@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ShoppingCart, Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@/components/ui/use-toast";
 
 interface ProductCardProps {
   id: number;
@@ -15,6 +17,17 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ name, category, price, image, rating, isNew, isBestseller }: ProductCardProps) => {
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
+  const handleAddToCart = () => {
+    toast({
+      title: "Added to Cart",
+      description: `${name} has been added to your cart`,
+    });
+    navigate("/orders");
+  };
+
   return (
     <Card className="group relative overflow-hidden border-border/50 hover:border-accent/50 transition-all duration-300 hover:shadow-large">
       {/* Badges */}
@@ -64,7 +77,8 @@ const ProductCard = ({ name, category, price, image, rating, isNew, isBestseller
             <span className="text-2xl font-bold text-primary">₹{price}</span>
           </div>
           <Button 
-            size="icon" 
+            size="icon"
+            onClick={handleAddToCart}
             className="gradient-primary text-primary-foreground hover:shadow-glow transition-all duration-300"
           >
             <ShoppingCart className="w-4 h-4" />
