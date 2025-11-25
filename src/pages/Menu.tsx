@@ -47,8 +47,13 @@ const Menu = () => {
     <div className="min-h-screen bg-background">
       <Helmet>
         <title>Menu - Dream Snack | Homemade Beverages, Snacks & Sweets</title>
-        <meta name="description" content="Browse our menu of fresh homemade tea, coffee, snacks, and sweets. All products made with love and care at home. Fast 10-minute delivery." />
-        <meta name="keywords" content="homemade menu, tea menu, coffee menu, snacks menu, Indian sweets, beverages, food delivery menu" />
+        <meta name="description" content="Browse our menu of fresh homemade tea, coffee, snacks, and sweets. All products made with love and care at home. Fast 10-minute delivery. Prices from ₹15 to ₹50." />
+        <meta name="keywords" content="homemade menu, tea menu, coffee menu, snacks menu, Indian sweets, beverages, food delivery menu, chai, samosa, gulab jamun" />
+        <link rel="canonical" href="https://dreamsnack.com/menu" />
+        <meta property="og:title" content="Menu - Dream Snack | Homemade Food Delivered Fast" />
+        <meta property="og:description" content="Explore our delicious homemade menu with fresh tea, coffee, snacks, and sweets. Delivered in 10 minutes." />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://dreamsnack.com/og-menu.jpg" />
       </Helmet>
       <Header />
       

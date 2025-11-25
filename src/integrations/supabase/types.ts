@@ -178,6 +178,57 @@ export type Database = {
         }
         Relationships: []
       }
+      orders: {
+        Row: {
+          created_at: string
+          delivered_at: string | null
+          delivery_address: string
+          estimated_delivery_time: string | null
+          id: string
+          items: Json
+          order_number: string
+          payment_method: string
+          phone: string
+          special_instructions: string | null
+          status: string
+          total_amount: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          delivered_at?: string | null
+          delivery_address: string
+          estimated_delivery_time?: string | null
+          id?: string
+          items: Json
+          order_number: string
+          payment_method: string
+          phone: string
+          special_instructions?: string | null
+          status?: string
+          total_amount: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          delivered_at?: string | null
+          delivery_address?: string
+          estimated_delivery_time?: string | null
+          id?: string
+          items?: Json
+          order_number?: string
+          payment_method?: string
+          phone?: string
+          special_instructions?: string | null
+          status?: string
+          total_amount?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null

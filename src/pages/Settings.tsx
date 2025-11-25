@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { Loader2, ArrowLeft } from "lucide-react";
@@ -62,6 +63,15 @@ const Settings = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <Helmet>
+        <title>Account Settings - Dream Snack | Manage Your Profile</title>
+        <meta name="description" content="Manage your Dream Snack account settings, delivery addresses, payment methods, and preferences. Update profile information and customize your food delivery experience." />
+        <meta name="keywords" content="account settings, profile management, delivery address, payment methods, user preferences, account management" />
+        <link rel="canonical" href="https://dreamsnack.com/settings" />
+        <meta property="og:title" content="Account Settings - Dream Snack" />
+        <meta property="og:description" content="Manage your Dream Snack account settings and preferences" />
+        <meta name="robots" content="noindex, follow" />
+      </Helmet>
       <Header />
       
       <main className="container mx-auto px-4 py-8 max-w-6xl flex-1">

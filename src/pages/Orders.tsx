@@ -8,8 +8,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
 import { toast } from "@/hooks/use-toast";
-import { ShoppingBag, Clock, Package, MapPin, CreditCard, CheckCircle, ArrowLeft } from "lucide-react";
+import { ShoppingBag, Clock, Package, MapPin, CreditCard, CheckCircle, ArrowLeft, History, Truck } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
@@ -36,6 +38,9 @@ const Orders = () => {
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState<any[]>([]);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [orderNumber, setOrderNumber] = useState("");
+  const [pastOrders, setPastOrders] = useState<any[]>([]);
+  const [activeTab, setActiveTab] = useState("menu");
   const [orderDetails, setOrderDetails] = useState({
     name: "",
     phone: "",
@@ -46,7 +51,7 @@ const Orders = () => {
 
   useEffect(() => {
     // Check authentication
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
       if (!session) {
         toast({
           title: "Authentication Required",
@@ -60,6 +65,8 @@ const Orders = () => {
           ...prev,
           name: session.user.user_metadata?.display_name || "",
         }));
+        // Fetch past orders
+        await fetchPastOrders(session.user.id);
       }
       setLoading(false);
     });
@@ -69,11 +76,27 @@ const Orders = () => {
         navigate("/auth");
       } else {
         setUser(session.user);
+        fetchPastOrders(session.user.id);
       }
     });
 
     return () => subscription.unsubscribe();
   }, [navigate]);
+
+  const fetchPastOrders = async (userId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from('orders')
+        .select('*')
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false });
+      
+      if (error) throw error;
+      setPastOrders(data || []);
+    } catch (error) {
+      console.error('Error fetching orders:', error);
+    }
+  };
 
   const addToCart = (item: any) => {
     const existingItem = cart.find(cartItem => cartItem.id === item.id);
@@ -110,7 +133,7 @@ const Orders = () => {
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
   };
 
-  const handlePlaceOrder = () => {
+  const handlePlaceOrder = async () => {
     if (!orderDetails.name || !orderDetails.phone || !orderDetails.address) {
       toast({
         title: "Missing Information",
@@ -129,25 +152,81 @@ const Orders = () => {
       return;
     }
 
-    // Simulate order placement
-    setShowConfirmation(true);
-    toast({
-      title: "Order Placed Successfully!",
-      description: "Your order will be delivered in 10 minutes",
-    });
-
-    // Reset after 5 seconds
-    setTimeout(() => {
-      setShowConfirmation(false);
-      setCart([]);
-      setOrderDetails({
-        name: user?.user_metadata?.display_name || "",
-        phone: "",
-        address: "",
-        paymentMethod: "cash",
-        specialInstructions: "",
+    if (!user) {
+      toast({
+        title: "Authentication Required",
+        description: "Please login to place an order",
+        variant: "destructive",
       });
-    }, 5000);
+      navigate("/auth");
+      return;
+    }
+
+    try {
+      // Generate order number
+      const generatedOrderNumber = `DS${Date.now().toString().slice(-8)}`;
+      
+      // Calculate estimated delivery time (10 minutes from now)
+      const estimatedDelivery = new Date(Date.now() + 10 * 60 * 1000);
+
+      // Save order to database
+      const { error } = await supabase.from('orders').insert({
+        user_id: user.id,
+        order_number: generatedOrderNumber,
+        items: cart,
+        total_amount: getTotalPrice(),
+        delivery_address: orderDetails.address,
+        phone: orderDetails.phone,
+        payment_method: orderDetails.paymentMethod,
+        special_instructions: orderDetails.specialInstructions || null,
+        status: 'pending',
+        estimated_delivery_time: estimatedDelivery.toISOString(),
+      });
+
+      if (error) throw error;
+
+      setOrderNumber(generatedOrderNumber);
+      setShowConfirmation(true);
+      toast({
+        title: "Order Placed Successfully!",
+        description: "Your order will be delivered in 10 minutes",
+      });
+
+      // Refresh orders list
+      await fetchPastOrders(user.id);
+
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        setShowConfirmation(false);
+        setCart([]);
+        setOrderDetails({
+          name: user?.user_metadata?.display_name || "",
+          phone: "",
+          address: "",
+          paymentMethod: "cash",
+          specialInstructions: "",
+        });
+      }, 5000);
+    } catch (error) {
+      console.error('Error placing order:', error);
+      toast({
+        title: "Error",
+        description: "Failed to place order. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const getStatusBadge = (status: string) => {
+    const statusConfig: Record<string, { variant: "default" | "secondary" | "destructive" | "outline", label: string }> = {
+      pending: { variant: "secondary", label: "Preparing" },
+      confirmed: { variant: "default", label: "Confirmed" },
+      on_the_way: { variant: "default", label: "On the Way" },
+      delivered: { variant: "outline", label: "Delivered" },
+      cancelled: { variant: "destructive", label: "Cancelled" },
+    };
+    const config = statusConfig[status] || { variant: "secondary", label: status };
+    return <Badge variant={config.variant}>{config.label}</Badge>;
   };
 
   if (loading) {
@@ -172,10 +251,10 @@ const Orders = () => {
               <p className="text-lg text-muted-foreground mb-6">
                 Thank you for your order! Your delicious homemade food will be delivered in 10 minutes.
               </p>
-              <div className="space-y-2 text-left max-w-sm mx-auto mb-8">
+                <div className="space-y-2 text-left max-w-sm mx-auto mb-8">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Order ID:</span>
-                  <span className="font-medium">#{Math.random().toString(36).substr(2, 9).toUpperCase()}</span>
+                  <span className="font-medium">#{orderNumber}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Total Amount:</span>
@@ -201,9 +280,13 @@ const Orders = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Order Now - Dream Snack | Fresh Homemade Food Delivery</title>
-        <meta name="description" content="Place your order for fresh homemade food. Choose from our menu of beverages, snacks, and sweets. Fast 10-minute delivery. Cash on delivery available." />
-        <meta name="keywords" content="order food online, homemade food order, online food delivery, fast delivery, cash on delivery" />
+        <title>Order Now - Dream Snack | Fresh Homemade Food Delivery in 10 Minutes</title>
+        <meta name="description" content="Place your order for fresh homemade food and track delivery in real-time. Choose from our menu of beverages, snacks, and sweets. Fast 10-minute delivery. Cash on delivery available." />
+        <meta name="keywords" content="order food online, homemade food order, online food delivery, fast delivery, cash on delivery, order tracking, real-time tracking" />
+        <link rel="canonical" href="https://dreamsnack.com/orders" />
+        <meta property="og:title" content="Order Now - Dream Snack | 10 Minute Delivery" />
+        <meta property="og:description" content="Order fresh homemade food with real-time tracking. Delivered in 10 minutes." />
+        <meta property="og:type" content="website" />
       </Helmet>
       <Header />
       
@@ -213,7 +296,20 @@ const Orders = () => {
           <p className="text-muted-foreground">Select items from our menu and get them delivered in 10 minutes!</p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-8">
+          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
+            <TabsTrigger value="menu" className="gap-2">
+              <ShoppingBag className="w-4 h-4" />
+              Order Menu
+            </TabsTrigger>
+            <TabsTrigger value="history" className="gap-2">
+              <History className="w-4 h-4" />
+              Order History
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="menu" className="mt-8">
+            <div className="grid lg:grid-cols-3 gap-8">
           {/* Menu Section */}
           <div className="lg:col-span-2 space-y-6">
             {/* Beverages */}
@@ -403,6 +499,91 @@ const Orders = () => {
             </Card>
           </div>
         </div>
+          </TabsContent>
+
+          <TabsContent value="history" className="mt-8">
+            {pastOrders.length === 0 ? (
+              <Card className="max-w-2xl mx-auto">
+                <CardContent className="text-center py-12">
+                  <Package className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
+                  <h3 className="text-xl font-semibold mb-2">No orders yet</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Start ordering delicious homemade food and track them here
+                  </p>
+                  <Button onClick={() => setActiveTab("menu")}>
+                    Browse Menu
+                  </Button>
+                </CardContent>
+              </Card>
+            ) : (
+              <div className="space-y-4 max-w-4xl mx-auto">
+                {pastOrders.map((order) => (
+                  <Card key={order.id}>
+                    <CardHeader>
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <CardTitle className="text-lg">Order #{order.order_number}</CardTitle>
+                          <CardDescription>
+                            {new Date(order.created_at).toLocaleDateString('en-IN', {
+                              day: 'numeric',
+                              month: 'long',
+                              year: 'numeric',
+                              hour: '2-digit',
+                              minute: '2-digit',
+                            })}
+                          </CardDescription>
+                        </div>
+                        {getStatusBadge(order.status)}
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        <div>
+                          <h4 className="font-semibold mb-2 flex items-center gap-2">
+                            <Package className="w-4 h-4" />
+                            Items
+                          </h4>
+                          <div className="space-y-1">
+                            {order.items.map((item: any, idx: number) => (
+                              <div key={idx} className="flex justify-between text-sm">
+                                <span>{item.name} x {item.quantity}</span>
+                                <span className="font-medium">₹{item.price * item.quantity}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="border-t pt-4">
+                          <div className="flex items-start gap-2 mb-2">
+                            <MapPin className="w-4 h-4 mt-0.5 text-muted-foreground" />
+                            <div className="text-sm">
+                              <p className="font-medium">Delivery Address</p>
+                              <p className="text-muted-foreground">{order.delivery_address}</p>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-2 mb-2">
+                            <CreditCard className="w-4 h-4 text-muted-foreground" />
+                            <span className="text-sm capitalize">{order.payment_method === 'cash' ? 'Cash on Delivery' : order.payment_method.toUpperCase()}</span>
+                          </div>
+                          {order.status !== 'delivered' && order.status !== 'cancelled' && (
+                            <div className="flex items-center gap-2 text-primary">
+                              <Truck className="w-4 h-4" />
+                              <span className="text-sm font-medium">
+                                Estimated delivery: {new Date(order.estimated_delivery_time).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                        <div className="border-t pt-4 flex justify-between items-center">
+                          <span className="text-lg font-bold">Total: ₹{order.total_amount}</span>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            )}
+          </TabsContent>
+        </Tabs>
       </main>
 
       <Footer />
