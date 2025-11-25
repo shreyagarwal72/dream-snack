@@ -130,8 +130,12 @@ const Checkout = () => {
     <div className="min-h-screen bg-background">
       <Helmet>
         <title>Checkout - Dream Snack | Fast Homemade Food Delivery</title>
-        <meta name="description" content="Complete your order for fresh homemade food. Multiple payment options including COD, UPI, and Card. Fast 10-minute delivery." />
-        <meta name="keywords" content="checkout, payment, homemade food delivery, order food online, COD, UPI payment" />
+        <meta name="description" content="Complete your order for fresh homemade food. Multiple payment options including COD, UPI, and Card. Secure checkout with fast 10-minute delivery." />
+        <meta name="keywords" content="checkout, payment, homemade food delivery, order food online, COD, UPI payment, secure payment, fast checkout" />
+        <link rel="canonical" href="https://dreamsnack.com/checkout" />
+        <meta property="og:title" content="Checkout - Dream Snack | Secure & Fast" />
+        <meta property="og:description" content="Complete your order securely with multiple payment options. Delivered in 10 minutes." />
+        <meta name="robots" content="noindex, follow" />
       </Helmet>
       <Header />
       

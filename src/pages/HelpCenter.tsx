@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import emailjs from '@emailjs/browser';
+import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -131,6 +132,14 @@ const HelpCenter = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Help Center - Dream Snack | Customer Support & FAQs</title>
+        <meta name="description" content="Get help with your Dream Snack orders. Find answers to common questions about delivery, payments, menu items, and account management. 24/7 customer support available." />
+        <meta name="keywords" content="help center, customer support, FAQ, delivery help, payment issues, order tracking, food delivery support" />
+        <link rel="canonical" href="https://dreamsnack.com/help" />
+        <meta property="og:title" content="Help Center - Dream Snack | Customer Support" />
+        <meta property="og:description" content="Get help with your Dream Snack orders. 24/7 customer support available." />
+      </Helmet>
       <Header />
       
       <main className="container mx-auto px-4 py-8">

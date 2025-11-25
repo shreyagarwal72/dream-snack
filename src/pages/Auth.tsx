@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -112,6 +113,12 @@ const Auth = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/5 flex items-center justify-center p-4">
+      <Helmet>
+        <title>{isLogin ? 'Login' : 'Sign Up'} - Dream Snack | Fresh Homemade Food Delivery</title>
+        <meta name="description" content={isLogin ? 'Login to Dream Snack and order fresh homemade food delivered in 10 minutes.' : 'Create your Dream Snack account and get fresh homemade food delivered in 10 minutes.'} />
+        <meta name="keywords" content="login, sign up, authentication, food delivery account, order food" />
+        <link rel="canonical" href={`https://dreamsnack.com/auth`} />
+      </Helmet>
       <div className="w-full max-w-md space-y-8 animate-fade-in">
         <div className="text-center">
           <img src={logo} alt="Dream Snack Logo" className="w-20 h-20 mx-auto rounded-2xl shadow-soft" />
