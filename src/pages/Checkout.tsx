@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -14,6 +16,7 @@ import { useToast } from "@/components/ui/use-toast";
 
 const Checkout = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [step, setStep] = useState<'cart' | 'payment' | 'confirmation'>('cart');
   const [paymentMethod, setPaymentMethod] = useState('cod');
   const [formData, setFormData] = useState({
@@ -41,7 +44,7 @@ const Checkout = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handlePlaceOrder = () => {
+  const handlePlaceOrder = async () => {
     // Validate required fields
     if (!formData.name || !formData.phone || !formData.address) {
       toast({
@@ -52,12 +55,51 @@ const Checkout = () => {
       return;
     }
 
-    // Simulate order placement
-    setStep('confirmation');
-    toast({
-      title: "Order Placed Successfully!",
-      description: "Your order will be delivered in 10 minutes",
-    });
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        toast({
+          title: "Authentication Required",
+          description: "Please login to place an order",
+          variant: "destructive",
+        });
+        window.location.href = '/auth';
+        return;
+      }
+
+      // Generate order number
+      const orderNumber = `DS${Date.now().toString().slice(-8)}`;
+      const estimatedDelivery = new Date(Date.now() + 10 * 60 * 1000);
+
+      // Save order to database
+      const { error } = await supabase.from('orders').insert({
+        user_id: user.id,
+        order_number: orderNumber,
+        items: cartItems,
+        total_amount: total,
+        delivery_address: formData.address,
+        phone: formData.phone,
+        payment_method: paymentMethod,
+        special_instructions: null,
+        status: 'pending',
+        estimated_delivery_time: estimatedDelivery.toISOString(),
+      });
+
+      if (error) throw error;
+
+      setStep('confirmation');
+      toast({
+        title: "Order Placed Successfully!",
+        description: "Your order will be delivered in 10 minutes",
+      });
+    } catch (error) {
+      console.error('Error placing order:', error);
+      toast({
+        title: "Error",
+        description: "Failed to place order. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   if (step === 'confirmation') {
@@ -115,9 +157,14 @@ const Checkout = () => {
                 </div>
               </div>
 
-              <Button onClick={() => window.location.href = '/'} className="w-full">
-                Continue Shopping
-              </Button>
+              <div className="flex gap-3">
+                <Button onClick={() => navigate('/orders')} variant="outline" className="flex-1">
+                  View Orders
+                </Button>
+                <Button onClick={() => navigate('/')} className="flex-1">
+                  Continue Shopping
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </main>

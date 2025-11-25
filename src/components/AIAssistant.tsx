@@ -175,7 +175,12 @@ export const AIAssistant = () => {
                       : 'bg-muted'
                   }`}
                 >
-                  <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                  <div 
+                    className="text-sm whitespace-pre-wrap"
+                    dangerouslySetInnerHTML={{ 
+                      __html: message.content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') 
+                    }}
+                  />
                 </div>
               </div>
             ))}

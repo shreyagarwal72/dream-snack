@@ -137,10 +137,10 @@ const Header = () => {
                   </Button>
                 </Link>
                 
-                <Link to="/menu" onClick={() => setMobileMenuOpen(false)}>
+                <Link to="/checkout" onClick={() => setMobileMenuOpen(false)}>
                   <Button variant="ghost" className="w-full justify-start gap-2">
-                    <Package className="w-4 h-4" />
-                    Menu
+                    <ShoppingCart className="w-4 h-4" />
+                    Checkout
                   </Button>
                 </Link>
                 
