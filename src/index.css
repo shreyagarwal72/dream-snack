@@ -154,6 +154,88 @@ All colors MUST be HSL.
   .shadow-glow {
     box-shadow: var(--shadow-glow);
   }
+
+  /* Decorative Underline for Headings */
+  .heading-underline {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .heading-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+    border-radius: 2px;
+  }
+
+  /* Smooth Scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Link Hover Animation */
+  .link-hover {
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s ease;
+  }
+  
+  .link-hover::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: hsl(var(--primary));
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+  }
+  
+  .link-hover:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  /* Section Spacing Utilities */
+  .section-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-padding {
+      padding-top: 7rem;
+      padding-bottom: 7rem;
+    }
+  }
+
+  /* Card Lift Effect */
+  .card-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card-lift:hover {
+    transform: translateY(-8px);
+  }
+
+  /* Button Scale Effect */
+  .button-scale {
+    transition: transform 0.2s ease;
+  }
+  
+  .button-scale:hover {
+    transform: scale(1.05);
+  }
+  
+  .button-scale:active {
+    transform: scale(0.98);
+  }
   
   @keyframes float {
     0%, 100% {

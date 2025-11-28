@@ -30,7 +30,7 @@ const features = [
 
 const DeliveryBanner = () => {
   return (
-    <section className="py-16 gradient-hero relative overflow-hidden">
+    <section className="section-padding gradient-hero relative overflow-hidden">
       {/* Animated background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -44,7 +44,7 @@ const DeliveryBanner = () => {
         }} />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 max-w-7xl">
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
             Why Choose Dream Snack?
@@ -61,7 +61,7 @@ const DeliveryBanner = () => {
               className="text-center animate-scale-in"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-foreground/10 backdrop-blur-sm mb-4 group hover:scale-110 transition-transform duration-300">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-foreground/10 backdrop-blur-sm mb-4 group hover:scale-110 transition-all duration-300 button-scale">
                 <feature.icon className="w-8 h-8 text-primary-foreground" />
               </div>
               <h3 className="font-semibold text-lg text-primary-foreground mb-2">
