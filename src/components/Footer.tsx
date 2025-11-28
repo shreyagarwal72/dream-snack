@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-card border-t mt-16">
-      <div className="container mx-auto px-4 py-12">
+    <footer className="bg-card border-t section-padding">
+      <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
@@ -29,22 +29,22 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#products" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#products" className="link-hover text-muted-foreground hover:text-foreground transition-colors">
                   Products
                 </a>
               </li>
               <li>
-                <a href="#categories" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#categories" className="link-hover text-muted-foreground hover:text-foreground transition-colors">
                   Categories
                 </a>
               </li>
               <li>
-                <a href="https://vanshubhai.vercel.app" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="https://vanshubhai.vercel.app" target="_blank" rel="noopener noreferrer" className="link-hover text-muted-foreground hover:text-foreground transition-colors">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#delivery-areas" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#delivery-areas" className="link-hover text-muted-foreground hover:text-foreground transition-colors">
                   Delivery Areas
                 </a>
               </li>
@@ -56,22 +56,22 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Customer Service</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/help" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link to="/help" className="link-hover text-muted-foreground hover:text-foreground transition-colors">
                   Help Center
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#" className="link-hover text-muted-foreground hover:text-foreground transition-colors">
                   Delivery Info
                 </a>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#" className="link-hover text-muted-foreground hover:text-foreground transition-colors">
                   Returns
                 </a>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#" className="link-hover text-muted-foreground hover:text-foreground transition-colors">
                   Terms & Conditions
                 </a>
               </li>
