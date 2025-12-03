@@ -1,14 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2, Mail, Lock, User } from "lucide-react";
-import logo from "@/assets/logo.png";
+import { Loader2 } from "lucide-react";
 import { z } from "zod";
 
 const emailSchema = z.string().trim().email({ message: "Invalid email address" }).max(255);
@@ -21,10 +16,10 @@ const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
+  const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user is already logged in
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
         navigate("/");
@@ -112,133 +107,209 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/5 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#252432] flex items-center justify-center p-4">
       <Helmet>
         <title>{isLogin ? 'Login' : 'Sign Up'} - Dream Snack | Fresh Homemade Food Delivery</title>
         <meta name="description" content={isLogin ? 'Login to Dream Snack and order fresh homemade food delivered in 10 minutes.' : 'Create your Dream Snack account and get fresh homemade food delivered in 10 minutes.'} />
         <meta name="keywords" content="login, sign up, authentication, food delivery account, order food" />
         <link rel="canonical" href={`https://dreamsnack.com/auth`} />
       </Helmet>
-      <div className="w-full max-w-md space-y-8 animate-fade-in">
-        <div className="text-center">
-          <img src={logo} alt="Dream Snack Logo" className="w-20 h-20 mx-auto rounded-2xl shadow-soft" />
-          <h1 className="mt-6 text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Dream Snack
-          </h1>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Fresh snacks delivered in 10 minutes
-          </p>
-        </div>
+      
+      <style>{`
+        @property --a {
+          syntax: "<angle>";
+          inherits: false;
+          initial-value: 0deg;
+        }
 
-        <Card className="shadow-medium border-accent/10">
-          <CardHeader>
-            <CardTitle className="text-2xl">
-              {isLogin ? "Welcome Back" : "Create Account"}
-            </CardTitle>
-            <CardDescription>
-              {isLogin
-                ? "Enter your credentials to access your account"
-                : "Sign up to start ordering delicious snacks"}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {!isLogin && (
-                <div className="space-y-2">
-                  <Label htmlFor="displayName" className="flex items-center gap-2">
-                    <User className="w-4 h-4" />
-                    Full Name
-                  </Label>
-                  <Input
-                    id="displayName"
-                    type="text"
-                    placeholder="John Doe"
-                    value={displayName}
-                    onChange={(e) => setDisplayName(e.target.value)}
-                    required
-                    disabled={loading}
-                    className="transition-all duration-300 focus:shadow-soft"
-                  />
-                </div>
-              )}
-              
-              <div className="space-y-2">
-                <Label htmlFor="email" className="flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  Email
-                </Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="you@example.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  disabled={loading}
-                  className="transition-all duration-300 focus:shadow-soft"
-                />
-              </div>
+        .glow-box {
+          position: relative;
+          background: repeating-conic-gradient(
+            from var(--a),
+            #ff2770 0%,
+            #ff2770 5%,
+            transparent 5%,
+            transparent 40%,
+            #ff2770 50%
+          );
+          filter: drop-shadow(0 15px 50px #000);
+          animation: rotating 4s linear infinite;
+          border-radius: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: all 0.5s ease;
+        }
 
-              <div className="space-y-2">
-                <Label htmlFor="password" className="flex items-center gap-2">
-                  <Lock className="w-4 h-4" />
-                  Password
-                </Label>
-                <Input
-                  id="password"
-                  type="password"
-                  placeholder="••••••••"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  disabled={loading}
-                  className="transition-all duration-300 focus:shadow-soft"
-                />
-              </div>
+        @keyframes rotating {
+          0% { --a: 0deg; }
+          100% { --a: 360deg; }
+        }
 
-              <Button
-                type="submit"
-                className="w-full"
+        .glow-box::before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: repeating-conic-gradient(
+            from var(--a),
+            #45f3ff 0%,
+            #45f3ff 5%,
+            transparent 5%,
+            transparent 40%,
+            #45f3ff 50%
+          );
+          filter: drop-shadow(0 15px 50px #000);
+          border-radius: 20px;
+          animation: rotating 4s linear infinite;
+          animation-delay: -1s;
+        }
+
+        .glow-box::after {
+          content: "";
+          position: absolute;
+          inset: 4px;
+          background: #2d2d39;
+          border-radius: 15px;
+          border: 8px solid #25252b;
+        }
+
+        .glow-input {
+          width: 100%;
+          padding: 12px 20px;
+          outline: none;
+          font-size: 1em;
+          color: #fff;
+          background: rgba(0, 0, 0, 0.1);
+          border: 2px solid #fff;
+          border-radius: 30px;
+          transition: all 0.3s ease;
+        }
+
+        .glow-input::placeholder {
+          color: #999;
+        }
+
+        .glow-input:focus {
+          border-color: #45f3ff;
+          box-shadow: 0 0 10px rgba(69, 243, 255, 0.3);
+        }
+
+        .glow-submit {
+          width: 100%;
+          padding: 12px 20px;
+          background: #45f3ff;
+          border: none;
+          border-radius: 30px;
+          font-weight: 500;
+          color: #111;
+          cursor: pointer;
+          transition: all 0.5s ease;
+          font-size: 1em;
+        }
+
+        .glow-submit:hover {
+          box-shadow: 0 0 10px #45f3ff, 0 0 60px #45f3ff;
+        }
+
+        .glow-submit:disabled {
+          opacity: 0.7;
+          cursor: not-allowed;
+        }
+      `}</style>
+
+      <div 
+        className="glow-box"
+        style={{
+          width: isHovered ? '450px' : '400px',
+          height: isHovered ? (isLogin ? '480px' : '560px') : '200px',
+        }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <div 
+          className="absolute flex justify-center items-center flex-col rounded-xl z-10 overflow-hidden transition-all duration-500"
+          style={{
+            inset: isHovered ? '40px' : '60px',
+            background: 'rgba(0, 0, 0, 0.2)',
+            boxShadow: 'inset 0 10px 20px rgba(0, 0, 0, 0.5)',
+            borderBottom: '2px solid rgba(255, 255, 255, 0.5)',
+          }}
+        >
+          <form 
+            onSubmit={handleSubmit}
+            className="relative flex justify-center items-center flex-col gap-5 w-[70%] transition-all duration-500"
+            style={{
+              transform: isHovered ? 'translateY(0px)' : 'translateY(126px)',
+            }}
+          >
+            <h2 className="text-white uppercase tracking-widest font-semibold flex items-center gap-2">
+              <span className="text-[#ff2770]" style={{ textShadow: '0 0 5px #ff2770, 0 0 30px #ff2770' }}>♥</span>
+              {isLogin ? 'Login' : 'Sign Up'}
+              <span className="text-[#ff2770]" style={{ textShadow: '0 0 5px #ff2770, 0 0 30px #ff2770' }}>♥</span>
+            </h2>
+
+            {!isLogin && (
+              <input
+                type="text"
+                placeholder="Full Name"
+                value={displayName}
+                onChange={(e) => setDisplayName(e.target.value)}
+                required
                 disabled={loading}
-              >
-                {loading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Please wait
-                  </>
-                ) : (
-                  <>{isLogin ? "Sign In" : "Create Account"}</>
-                )}
-              </Button>
-            </form>
-          </CardContent>
-          <CardFooter className="flex flex-col space-y-4">
-            <div className="relative w-full">
-              <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t" />
-              </div>
-              <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-card px-2 text-muted-foreground">
-                  {isLogin ? "Don't have an account?" : "Already have an account?"}
-                </span>
-              </div>
-            </div>
-            
-            <Button
-              type="button"
-              variant="outline"
-              className="w-full"
-              onClick={() => setIsLogin(!isLogin)}
-              disabled={loading}
-            >
-              {isLogin ? "Create New Account" : "Sign In Instead"}
-            </Button>
-          </CardFooter>
-        </Card>
+                className="glow-input"
+              />
+            )}
 
-        <p className="text-center text-xs text-muted-foreground">
-          By continuing, you agree to our Terms of Service and Privacy Policy
-        </p>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              disabled={loading}
+              className="glow-input"
+            />
+
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              disabled={loading}
+              className="glow-input"
+            />
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="glow-submit flex items-center justify-center gap-2"
+            >
+              {loading ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  Please wait
+                </>
+              ) : (
+                <>{isLogin ? "Sign In" : "Create Account"}</>
+              )}
+            </button>
+
+            <div className="flex w-full justify-between text-sm">
+              <a href="#" className="text-white hover:text-[#45f3ff] transition-colors">
+                Forgot Password
+              </a>
+              <button
+                type="button"
+                onClick={() => setIsLogin(!isLogin)}
+                className="text-[#ff2770] font-semibold hover:text-[#45f3ff] transition-colors"
+              >
+                {isLogin ? "Sign Up" : "Login"}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
