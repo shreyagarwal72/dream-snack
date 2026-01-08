@@ -29,8 +29,8 @@ const categories = [
 
 const Categories = () => {
   return (
-    <section id="categories" className="section-padding bg-gradient-warm">
-      <div className="container mx-auto px-4 max-w-7xl">
+    <section id="categories" className="py-16 bg-gradient-warm">
+      <div className="container mx-auto px-4">
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Shop by <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Category</span>
@@ -40,14 +40,14 @@ const Categories = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {categories.map((category, index) => (
             <div
               key={index}
               className="group cursor-pointer animate-scale-in"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="relative p-6 rounded-2xl bg-card hover:shadow-large transition-all duration-300 card-lift">
+              <div className="relative p-6 rounded-2xl bg-card hover:shadow-large transition-all duration-300 hover:-translate-y-1">
                 <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${category.color} p-3 mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   <category.icon className="w-full h-full text-white" />
                 </div>

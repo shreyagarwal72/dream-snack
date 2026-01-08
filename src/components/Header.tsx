@@ -49,22 +49,22 @@ const Header = () => {
           </div>
           
           <div className="hidden md:flex items-center gap-6">
-            <Link to="/menu" className="link-hover text-foreground/80 hover:text-foreground transition-colors">
+            <Link to="/menu" className="text-foreground/80 hover:text-foreground transition-colors">
               Menu
             </Link>
-            <a href="#delivery-areas" className="link-hover text-foreground/80 hover:text-foreground transition-colors">
+            <a href="#delivery-areas" className="text-foreground/80 hover:text-foreground transition-colors">
               Delivery Areas
             </a>
             {user && (
-              <Link to="/orders" className="link-hover text-foreground/80 hover:text-foreground transition-colors">
+              <Link to="/orders" className="text-foreground/80 hover:text-foreground transition-colors">
                 Orders
               </Link>
             )}
-            <Link to="/help" className="link-hover text-foreground/80 hover:text-foreground transition-colors">
+            <Link to="/help" className="text-foreground/80 hover:text-foreground transition-colors">
               Help
             </Link>
             {user && (
-              <Link to="/settings" className="link-hover text-foreground/80 hover:text-foreground transition-colors">
+              <Link to="/settings" className="text-foreground/80 hover:text-foreground transition-colors">
                 Settings
               </Link>
             )}

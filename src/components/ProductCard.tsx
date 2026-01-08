@@ -29,7 +29,7 @@ const ProductCard = ({ name, category, price, image, rating, isNew, isBestseller
   };
 
   return (
-    <Card className="group relative overflow-hidden border-border/50 hover:border-accent/50 transition-all duration-300 hover:shadow-large card-lift">
+    <Card className="group relative overflow-hidden border-border/50 hover:border-accent/50 transition-all duration-300 hover:shadow-large">
       {/* Badges */}
       <div className="absolute top-3 left-3 z-10 flex gap-2">
         {isNew && (

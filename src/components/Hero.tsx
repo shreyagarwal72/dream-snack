@@ -18,20 +18,19 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 relative z-10 max-w-7xl">
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-2xl animate-fade-in">
           <div className="inline-flex items-center gap-2 bg-accent/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
             <Sparkles className="w-4 h-4 text-accent" />
             <span className="text-sm font-medium">100% Homemade by Devansh & Shrey</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="heading-underline bg-gradient-to-r from-primary via-primary-glow to-accent bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-primary via-primary-glow to-accent bg-clip-text text-transparent">
               Dream Snack
             </span>
-            <span className="text-foreground">,</span>
             <br />
-            <span className="text-foreground">Delivered in Minutes!</span>
+            <span className="text-foreground">10 Min Delivery</span>
           </h1>
           
           <p className="text-xl text-muted-foreground mb-4">
@@ -40,15 +39,15 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-wrap gap-4 mb-8">
-            <Link to="/menu">
-              <Button size="lg" className="gradient-primary text-primary-foreground hover:shadow-glow transition-all duration-300 group button-scale">
-                View Menu
+            <Link to="/orders">
+              <Button size="lg" className="gradient-primary text-primary-foreground hover:shadow-glow transition-all duration-300 group">
+                Order Now
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
             <Link to="/menu">
-              <Button size="lg" variant="outline" className="backdrop-blur-sm button-scale border-2">
-                Learn More
+              <Button size="lg" variant="outline" className="backdrop-blur-sm">
+                View Menu
               </Button>
             </Link>
           </div>
