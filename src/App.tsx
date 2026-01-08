@@ -11,6 +11,8 @@ import Settings from "./pages/Settings";
 import Orders from "./pages/Orders";
 import Menu from "./pages/Menu";
 import Checkout from "./pages/Checkout";
+import Intro from "./pages/Intro";
+import Admin from "./pages/Admin";
 import { AIAssistant } from "./components/AIAssistant";
 
 const queryClient = new QueryClient();
@@ -23,6 +25,8 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/intro" element={<Intro />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/orders" element={<Orders />} />
