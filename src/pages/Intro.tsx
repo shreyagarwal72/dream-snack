@@ -12,6 +12,8 @@ import slide4 from '@/assets/intro-slide-4.jpg';
 import slide5 from '@/assets/intro-slide-5.jpg';
 import logo from '@/assets/logo.png';
 
+const INTRO_SEEN_KEY = 'dreamsnack_intro_seen';
+
 const data = [
   {
     place: 'Premium Beverages',
@@ -61,6 +63,11 @@ export default function Intro() {
   const loopRef = useRef<NodeJS.Timeout | null>(null);
   const detailsEvenRef = useRef(true);
 
+  // Mark intro as seen when component mounts
+  useEffect(() => {
+    localStorage.setItem(INTRO_SEEN_KEY, 'true');
+  }, []);
+
   // Preload images
   useEffect(() => {
     const loadImages = async () => {
@@ -108,11 +115,12 @@ export default function Intro() {
 
     const { innerHeight: height, innerWidth: width } = window;
     const isMobile = width < 768;
-    const offsetTop = isMobile ? height - 280 : height - 430;
-    const offsetLeft = isMobile ? 20 : width - 830;
-    const cardWidth = isMobile ? 100 : 200;
-    const cardHeight = isMobile ? 150 : 300;
-    const gap = isMobile ? 20 : 40;
+    // Adjusted mobile positioning - move cards further down to prevent overlap
+    const offsetTop = isMobile ? height - 200 : height - 430;
+    const offsetLeft = isMobile ? 10 : width - 830;
+    const cardWidth = isMobile ? 60 : 200;
+    const cardHeight = isMobile ? 90 : 300;
+    const gap = isMobile ? 10 : 40;
 
     // Set up initial positions
     data.forEach((_, index) => {
@@ -173,11 +181,12 @@ export default function Intro() {
   const animateStep = useCallback(() => {
     const { innerHeight: height, innerWidth: width } = window;
     const isMobile = width < 768;
-    const offsetTop = isMobile ? height - 280 : height - 430;
-    const offsetLeft = isMobile ? 20 : width - 830;
-    const cardWidth = isMobile ? 100 : 200;
-    const cardHeight = isMobile ? 150 : 300;
-    const gap = isMobile ? 20 : 40;
+    // Match the same mobile positioning
+    const offsetTop = isMobile ? height - 200 : height - 430;
+    const offsetLeft = isMobile ? 10 : width - 830;
+    const cardWidth = isMobile ? 60 : 200;
+    const cardHeight = isMobile ? 90 : 300;
+    const gap = isMobile ? 10 : 40;
 
     setCurrentIndex((prev) => {
       const nextIndex = (prev + 1) % data.length;
