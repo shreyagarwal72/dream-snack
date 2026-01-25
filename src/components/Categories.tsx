@@ -1,4 +1,5 @@
 import { Coffee, Leaf, Candy, Package } from "lucide-react";
+import { useGlass } from "@/contexts/GlassContext";
 
 const categories = [
   {
@@ -28,8 +29,10 @@ const categories = [
 ];
 
 const Categories = () => {
+  const { glassEnabled } = useGlass();
+
   return (
-    <section id="categories" className="py-16 bg-gradient-warm">
+    <section id="categories" className={`py-16 ${glassEnabled ? '' : 'bg-gradient-warm'}`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -44,18 +47,20 @@ const Categories = () => {
           {categories.map((category, index) => (
             <div
               key={index}
-              className="group cursor-pointer animate-scale-in"
+              className={`group cursor-pointer ${glassEnabled ? 'animate-fade-in' : 'animate-scale-in'}`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="relative p-6 rounded-2xl bg-card hover:shadow-large transition-all duration-300 hover:-translate-y-1">
-                <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${category.color} p-3 mb-4 group-hover:scale-110 transition-transform duration-300`}>
+              <div className={`relative p-6 rounded-2xl transition-all duration-300 ${glassEnabled ? 'glass-card glass-hover-lift' : 'bg-card hover:shadow-large hover:-translate-y-1'}`}>
+                <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${category.color} p-3 mb-4 group-hover:scale-110 transition-transform duration-300 ${glassEnabled ? 'shadow-lg' : ''}`}>
                   <category.icon className="w-full h-full text-white" />
                 </div>
                 <h3 className="font-semibold text-lg mb-1">{category.name}</h3>
                 <p className="text-sm text-muted-foreground">{category.count}</p>
                 
                 {/* Hover gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/5 to-accent/0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                {!glassEnabled && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/5 to-accent/0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                )}
               </div>
             </div>
           ))}

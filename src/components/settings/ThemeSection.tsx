@@ -2,13 +2,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Monitor, Moon, Sun, Globe } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { Monitor, Moon, Sun, Globe, Sparkles, Zap } from "lucide-react";
 import { toast } from "sonner";
 import { useEffect, useState } from "react";
+import { useGlass } from "@/contexts/GlassContext";
 
 const ThemeSection = () => {
   const [theme, setTheme] = useState("system");
   const [language, setLanguage] = useState("en");
+  const { glassEnabled, setGlassEnabled } = useGlass();
 
   useEffect(() => {
     // Load saved preferences
@@ -51,8 +54,13 @@ const ThemeSection = () => {
     toast.success("Language preference saved");
   };
 
+  const handleGlassToggle = (enabled: boolean) => {
+    setGlassEnabled(enabled);
+    toast.success(enabled ? "Appearance mode enabled - Enjoy the glass effects!" : "Performance mode enabled - Animations reduced");
+  };
+
   return (
-    <Card>
+    <Card className={glassEnabled ? "glass-card animate-fade-in" : "animate-fade-in"}>
       <CardHeader>
         <CardTitle>Appearance & Language</CardTitle>
         <CardDescription>
@@ -60,6 +68,39 @@ const ThemeSection = () => {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
+        {/* Appearance Toggle */}
+        <div className="space-y-4">
+          <div className="flex items-center justify-between p-4 rounded-lg border bg-gradient-to-r from-primary/5 to-accent/5">
+            <div className="flex items-center gap-3">
+              {glassEnabled ? (
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center animate-glow-pulse">
+                  <Sparkles className="w-5 h-5 text-primary-foreground" />
+                </div>
+              ) : (
+                <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
+                  <Zap className="w-5 h-5 text-muted-foreground" />
+                </div>
+              )}
+              <div>
+                <Label htmlFor="glass-mode" className="text-base font-medium cursor-pointer">
+                  {glassEnabled ? "Appearance Mode" : "Performance Mode"}
+                </Label>
+                <p className="text-sm text-muted-foreground">
+                  {glassEnabled 
+                    ? "iOS liquid glass effects & animations enabled" 
+                    : "Reduced animations for better performance"}
+                </p>
+              </div>
+            </div>
+            <Switch
+              id="glass-mode"
+              checked={glassEnabled}
+              onCheckedChange={handleGlassToggle}
+              className="data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-primary data-[state=checked]:to-accent"
+            />
+          </div>
+        </div>
+
         <div className="space-y-3">
           <Label>Theme</Label>
           <RadioGroup value={theme} onValueChange={handleThemeChange}>
@@ -93,7 +134,7 @@ const ThemeSection = () => {
             Language
           </Label>
           <Select value={language} onValueChange={handleLanguageChange}>
-            <SelectTrigger id="language" className="bg-background">
+            <SelectTrigger id="language" className={glassEnabled ? "glass-input bg-background" : "bg-background"}>
               <SelectValue placeholder="Select language" />
             </SelectTrigger>
             <SelectContent className="bg-background border border-border z-50">
