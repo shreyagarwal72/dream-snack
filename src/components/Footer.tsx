@@ -1,4 +1,4 @@
-import { Clock, Mail, Phone, MapPin, Info } from "lucide-react";
+import { Clock, Info } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { Link } from "react-router-dom";
 
@@ -78,22 +78,10 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Hours */}
           <div>
-            <h4 className="font-semibold mb-4">Contact Us</h4>
+            <h4 className="font-semibold mb-4">Service Hours</h4>
             <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-2 text-muted-foreground">
-                <Phone className="w-4 h-4" />
-                <span>+91 9412104618</span>
-              </li>
-              <li className="flex items-center gap-2 text-muted-foreground">
-                <Mail className="w-4 h-4" />
-                <span>sanjayvansu1973@gmail.com</span>
-              </li>
-              <li className="flex items-start gap-2 text-muted-foreground">
-                <MapPin className="w-4 h-4 mt-1 flex-shrink-0" />
-                <span>Serving: Kamla Nagar, Balkeshwar, Adarsh Nagar, Karmyogi</span>
-              </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Clock className="w-4 h-4" />
                 <span>6:00 AM - 9:00 PM (7 Days)</span>

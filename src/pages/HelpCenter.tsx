@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, Mail, Phone, Clock, MessageSquare, Send, HelpCircle, Info } from "lucide-react";
+import { ArrowLeft, Clock, MessageSquare, Send, HelpCircle, Info } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -95,7 +95,7 @@ const HelpCenter = () => {
       console.error("EmailJS error:", error);
       toast({
         title: "Failed to send message",
-        description: "Please try again or contact us directly at +91 9412104618",
+        description: "Please try again later.",
         variant: "destructive",
       });
     } finally {
@@ -270,41 +270,17 @@ const HelpCenter = () => {
 
           {/* Contact Information & FAQs */}
           <div className="space-y-6">
-            {/* Quick Contact */}
+            {/* Service Hours */}
             <Card className="p-6">
-              <h2 className="text-2xl font-semibold mb-6">Quick Contact</h2>
+              <h2 className="text-2xl font-semibold mb-6">Service Hours</h2>
               
               <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                    <Phone className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium">Phone</p>
-                    <a href="tel:+919412104618" className="text-muted-foreground hover:text-foreground">
-                      +91 9412104618
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                    <Mail className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium">Email</p>
-                    <a href="mailto:sanjayvansu1973@gmail.com" className="text-muted-foreground hover:text-foreground">
-                      sanjayvansu1973@gmail.com
-                    </a>
-                  </div>
-                </div>
-
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
                     <Clock className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="font-medium">Service Hours</p>
+                    <p className="font-medium">We're Open</p>
                     <p className="text-muted-foreground">6:00 AM - 9:00 PM (7 Days)</p>
                   </div>
                 </div>
