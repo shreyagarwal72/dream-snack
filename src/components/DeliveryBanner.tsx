@@ -1,4 +1,5 @@
 import { Timer, CheckCircle, Shield, Truck, Clock } from "lucide-react";
+import { useGlass } from "@/contexts/GlassContext";
 
 const features = [
   {
@@ -29,8 +30,10 @@ const features = [
 ];
 
 const DeliveryBanner = () => {
+  const { glassEnabled } = useGlass();
+
   return (
-    <section className="py-16 gradient-hero relative overflow-hidden">
+    <section className={`py-16 relative overflow-hidden ${glassEnabled ? 'glass-card' : 'gradient-hero'}`}>
       {/* Animated background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -43,6 +46,10 @@ const DeliveryBanner = () => {
           )`
         }} />
       </div>
+
+      {glassEnabled && (
+        <div className="absolute inset-0 gradient-hero opacity-90" />
+      )}
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12 animate-fade-in">
@@ -58,11 +65,11 @@ const DeliveryBanner = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="text-center animate-scale-in"
+              className={`text-center ${glassEnabled ? 'animate-fade-in' : 'animate-scale-in'}`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-foreground/10 backdrop-blur-sm mb-4 group hover:scale-110 transition-transform duration-300">
-                <feature.icon className="w-8 h-8 text-primary-foreground" />
+              <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full mb-4 group hover:scale-110 transition-transform duration-300 ${glassEnabled ? 'glass-button' : 'bg-primary-foreground/10 backdrop-blur-sm'}`}>
+                <feature.icon className={`w-8 h-8 text-primary-foreground ${glassEnabled ? 'animate-pulse-slow' : ''}`} />
               </div>
               <h3 className="font-semibold text-lg text-primary-foreground mb-2">
                 {feature.title}
