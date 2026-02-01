@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -13,10 +13,134 @@ import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, CreditCard, Smartphone, Wallet, ShieldCheck, Truck, Clock } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { useGlass } from "@/contexts/GlassContext";
+import gsap from "gsap";
+
+// Truck Button Component for Order Placement
+const TruckButton = ({ 
+  glassEnabled, 
+  onOrderComplete,
+  disabled 
+}: { 
+  glassEnabled: boolean; 
+  onOrderComplete: () => void;
+  disabled?: boolean;
+}) => {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [isDone, setIsDone] = useState(false);
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (disabled) return;
+    
+    const button = buttonRef.current;
+    if (!button) return;
+
+    const box = button.querySelector('.box') as HTMLElement;
+    const truck = button.querySelector('.truck') as HTMLElement;
+
+    if (!isDone) {
+      if (!isAnimating) {
+        setIsAnimating(true);
+
+        gsap.to(button, {
+          '--box-s': 1,
+          '--box-o': 1,
+          duration: 0.3,
+          delay: 0.5
+        });
+
+        gsap.to(box, {
+          x: 0,
+          duration: 0.4,
+          delay: 0.7
+        });
+
+        gsap.to(button, {
+          '--hx': -5,
+          '--bx': 50,
+          duration: 0.18,
+          delay: 0.92
+        });
+
+        gsap.to(box, {
+          y: 0,
+          duration: 0.1,
+          delay: 1.15
+        });
+
+        gsap.set(button, {
+          '--truck-y': 0,
+          '--truck-y-n': -26
+        });
+
+        gsap.to(button, {
+          '--truck-y': 1,
+          '--truck-y-n': -25,
+          duration: 0.2,
+          delay: 1.25,
+          onComplete() {
+            gsap.timeline({
+              onComplete() {
+                setIsDone(true);
+                // Trigger order completion after animation
+                setTimeout(() => {
+                  onOrderComplete();
+                }, 500);
+              }
+            }).to(truck, {
+              x: 0,
+              duration: 0.4
+            }).to(truck, {
+              x: 40,
+              duration: 1
+            }).to(truck, {
+              x: 20,
+              duration: 0.6
+            }).to(truck, {
+              x: 96,
+              duration: 0.4
+            });
+            gsap.to(button, {
+              '--progress': 1,
+              duration: 2.4,
+              ease: "power2.in"
+            });
+          }
+        });
+      }
+    }
+  };
+
+  return (
+    <button
+      ref={buttonRef}
+      onClick={handleClick}
+      disabled={disabled}
+      className={`truck-button ${isAnimating ? 'animation' : ''} ${isDone ? 'done' : ''} ${glassEnabled ? 'glass-truck' : ''} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+    >
+      <span className="default">Place Order</span>
+      <span className="success">
+        Order Placed
+        <svg viewBox="0 0 12 10">
+          <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+        </svg>
+      </span>
+      <div className="truck">
+        <div className="wheel"></div>
+        <div className="back"></div>
+        <div className="front"></div>
+        <div className="box"></div>
+      </div>
+    </button>
+  );
+};
 
 const Checkout = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { glassEnabled } = useGlass();
   const [step, setStep] = useState<'cart' | 'payment' | 'confirmation'>('cart');
   const [paymentMethod, setPaymentMethod] = useState('cod');
   const [formData, setFormData] = useState({
@@ -114,8 +238,8 @@ const Checkout = () => {
           <Card className="max-w-2xl mx-auto text-center">
             <CardHeader>
               <div className="flex justify-center mb-4">
-                <div className="h-20 w-20 rounded-full bg-green-100 flex items-center justify-center">
-                  <CheckCircle2 className="h-12 w-12 text-green-600" />
+                <div className="h-20 w-20 rounded-full bg-accent/20 flex items-center justify-center">
+                  <CheckCircle2 className="h-12 w-12 text-accent" />
                 </div>
               </div>
               <CardTitle className="text-3xl">Order Confirmed!</CardTitle>
@@ -400,9 +524,14 @@ const Checkout = () => {
                   </div>
                 </div>
 
-                <Button onClick={handlePlaceOrder} className="w-full" size="lg">
-                  Place Order (Demo)
-                </Button>
+                {/* Truck Button for Order Placement */}
+                <div className="flex justify-center">
+                  <TruckButton 
+                    glassEnabled={glassEnabled} 
+                    onOrderComplete={handlePlaceOrder}
+                    disabled={!formData.name || !formData.phone || !formData.address}
+                  />
+                </div>
 
                 <div className="text-xs text-muted-foreground space-y-1">
                   <p>✓ Free delivery on orders above ₹200</p>
