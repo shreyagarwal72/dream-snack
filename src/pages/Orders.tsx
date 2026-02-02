@@ -14,6 +14,8 @@ import { toast } from "@/hooks/use-toast";
 import { ShoppingBag, Clock, Package, MapPin, CreditCard, CheckCircle, ArrowLeft, History, Truck } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import TruckButton from "@/components/TruckButton";
+import { useGlass } from "@/contexts/GlassContext";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
 
 // Demo menu items
@@ -34,6 +36,7 @@ const menuItems = {
 
 const Orders = () => {
   const navigate = useNavigate();
+  const { glassEnabled } = useGlass();
   const [user, setUser] = useState<SupabaseUser | null>(null);
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState<any[]>([]);
@@ -239,19 +242,19 @@ const Orders = () => {
 
   if (showConfirmation) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className={`min-h-screen bg-background ${glassEnabled ? 'glass-mode' : ''}`}>
         <Header />
         <div className="container mx-auto px-4 py-16">
-          <Card className="max-w-2xl mx-auto">
+          <Card className={`max-w-2xl mx-auto ${glassEnabled ? 'glass-card' : ''}`}>
             <CardContent className="text-center py-12">
-              <div className="mb-6 inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-100 dark:bg-green-900/20">
-                <CheckCircle className="w-12 h-12 text-green-600" />
+              <div className={`mb-6 inline-flex items-center justify-center w-20 h-20 rounded-full ${glassEnabled ? 'bg-secondary/20 backdrop-blur-sm' : 'bg-secondary/20'}`}>
+                <CheckCircle className="w-12 h-12 text-secondary" />
               </div>
               <h2 className="text-3xl font-bold mb-4">Order Confirmed!</h2>
               <p className="text-lg text-muted-foreground mb-6">
                 Thank you for your order! Your delicious homemade food will be delivered in 10 minutes.
               </p>
-                <div className="space-y-2 text-left max-w-sm mx-auto mb-8">
+                <div className={`space-y-2 text-left max-w-sm mx-auto mb-8 p-4 rounded-lg ${glassEnabled ? 'glass-card' : 'bg-muted'}`}>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Order ID:</span>
                   <span className="font-medium">#{orderNumber}</span>
@@ -265,7 +268,7 @@ const Orders = () => {
                   <span className="font-medium">10 minutes</span>
                 </div>
               </div>
-              <Button onClick={() => navigate("/")} className="gap-2">
+              <Button onClick={() => navigate("/")} className={`gap-2 ${glassEnabled ? 'glass-button bg-primary text-primary-foreground' : ''}`}>
                 <ArrowLeft className="w-4 h-4" />
                 Back to Home
               </Button>
@@ -482,15 +485,14 @@ const Orders = () => {
                     rows={2}
                   />
                 </div>
-                <Button 
-                  className="w-full gap-2" 
-                  size="lg"
-                  onClick={handlePlaceOrder}
-                  disabled={cart.length === 0}
-                >
-                  <CreditCard className="w-4 h-4" />
-                  Place Order
-                </Button>
+                <div className="flex justify-center">
+                  <TruckButton 
+                    onOrderComplete={handlePlaceOrder}
+                    disabled={cart.length === 0 || !orderDetails.name || !orderDetails.phone || !orderDetails.address}
+                    buttonText="Place Order"
+                    successText="Order Placed"
+                  />
+                </div>
                 <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
                   <Clock className="w-4 h-4" />
                   <span>Delivery in 10 minutes</span>
