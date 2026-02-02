@@ -1,9 +1,10 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import TruckButton from "@/components/TruckButton";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -14,128 +15,6 @@ import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, CreditCard, Smartphone, Wallet, ShieldCheck, Truck, Clock } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useGlass } from "@/contexts/GlassContext";
-import gsap from "gsap";
-
-// Truck Button Component for Order Placement
-const TruckButton = ({ 
-  glassEnabled, 
-  onOrderComplete,
-  disabled 
-}: { 
-  glassEnabled: boolean; 
-  onOrderComplete: () => void;
-  disabled?: boolean;
-}) => {
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [isDone, setIsDone] = useState(false);
-
-  const handleClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (disabled) return;
-    
-    const button = buttonRef.current;
-    if (!button) return;
-
-    const box = button.querySelector('.box') as HTMLElement;
-    const truck = button.querySelector('.truck') as HTMLElement;
-
-    if (!isDone) {
-      if (!isAnimating) {
-        setIsAnimating(true);
-
-        gsap.to(button, {
-          '--box-s': 1,
-          '--box-o': 1,
-          duration: 0.3,
-          delay: 0.5
-        });
-
-        gsap.to(box, {
-          x: 0,
-          duration: 0.4,
-          delay: 0.7
-        });
-
-        gsap.to(button, {
-          '--hx': -5,
-          '--bx': 50,
-          duration: 0.18,
-          delay: 0.92
-        });
-
-        gsap.to(box, {
-          y: 0,
-          duration: 0.1,
-          delay: 1.15
-        });
-
-        gsap.set(button, {
-          '--truck-y': 0,
-          '--truck-y-n': -26
-        });
-
-        gsap.to(button, {
-          '--truck-y': 1,
-          '--truck-y-n': -25,
-          duration: 0.2,
-          delay: 1.25,
-          onComplete() {
-            gsap.timeline({
-              onComplete() {
-                setIsDone(true);
-                // Trigger order completion after animation
-                setTimeout(() => {
-                  onOrderComplete();
-                }, 500);
-              }
-            }).to(truck, {
-              x: 0,
-              duration: 0.4
-            }).to(truck, {
-              x: 40,
-              duration: 1
-            }).to(truck, {
-              x: 20,
-              duration: 0.6
-            }).to(truck, {
-              x: 96,
-              duration: 0.4
-            });
-            gsap.to(button, {
-              '--progress': 1,
-              duration: 2.4,
-              ease: "power2.in"
-            });
-          }
-        });
-      }
-    }
-  };
-
-  return (
-    <button
-      ref={buttonRef}
-      onClick={handleClick}
-      disabled={disabled}
-      className={`truck-button ${isAnimating ? 'animation' : ''} ${isDone ? 'done' : ''} ${glassEnabled ? 'glass-truck' : ''} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
-    >
-      <span className="default">Place Order</span>
-      <span className="success">
-        Order Placed
-        <svg viewBox="0 0 12 10">
-          <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-        </svg>
-      </span>
-      <div className="truck">
-        <div className="wheel"></div>
-        <div className="back"></div>
-        <div className="front"></div>
-        <div className="box"></div>
-      </div>
-    </button>
-  );
-};
 
 const Checkout = () => {
   const { toast } = useToast();
@@ -228,18 +107,18 @@ const Checkout = () => {
 
   if (step === 'confirmation') {
     return (
-      <div className="min-h-screen bg-background">
+      <div className={`min-h-screen bg-background ${glassEnabled ? 'glass-mode' : ''}`}>
         <Helmet>
           <title>Order Confirmed - Dream Snack</title>
           <meta name="description" content="Your order has been confirmed and will be delivered soon" />
         </Helmet>
         <Header />
         <main className="container mx-auto px-4 py-16">
-          <Card className="max-w-2xl mx-auto text-center">
+          <Card className={`max-w-2xl mx-auto text-center ${glassEnabled ? 'glass-card' : ''}`}>
             <CardHeader>
               <div className="flex justify-center mb-4">
-                <div className="h-20 w-20 rounded-full bg-accent/20 flex items-center justify-center">
-                  <CheckCircle2 className="h-12 w-12 text-accent" />
+                <div className={`h-20 w-20 rounded-full flex items-center justify-center ${glassEnabled ? 'bg-secondary/20 backdrop-blur-sm' : 'bg-secondary/20'}`}>
+                  <CheckCircle2 className="h-12 w-12 text-secondary" />
                 </div>
               </div>
               <CardTitle className="text-3xl">Order Confirmed!</CardTitle>
@@ -249,24 +128,24 @@ const Checkout = () => {
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="flex flex-col items-center p-4 bg-muted rounded-lg">
+                <div className={`flex flex-col items-center p-4 rounded-lg ${glassEnabled ? 'glass-card' : 'bg-muted'}`}>
                   <Clock className="h-8 w-8 text-primary mb-2" />
                   <p className="font-semibold">Estimated Delivery</p>
                   <p className="text-sm text-muted-foreground">10 minutes</p>
                 </div>
-                <div className="flex flex-col items-center p-4 bg-muted rounded-lg">
+                <div className={`flex flex-col items-center p-4 rounded-lg ${glassEnabled ? 'glass-card' : 'bg-muted'}`}>
                   <Truck className="h-8 w-8 text-primary mb-2" />
                   <p className="font-semibold">Order ID</p>
                   <p className="text-sm text-muted-foreground">#DS{Math.floor(Math.random() * 10000)}</p>
                 </div>
-                <div className="flex flex-col items-center p-4 bg-muted rounded-lg">
+                <div className={`flex flex-col items-center p-4 rounded-lg ${glassEnabled ? 'glass-card' : 'bg-muted'}`}>
                   <Wallet className="h-8 w-8 text-primary mb-2" />
                   <p className="font-semibold">Payment</p>
                   <p className="text-sm text-muted-foreground capitalize">{paymentMethod === 'cod' ? 'Cash on Delivery' : paymentMethod.toUpperCase()}</p>
                 </div>
               </div>
 
-              <div className="bg-muted p-4 rounded-lg">
+              <div className={`p-4 rounded-lg ${glassEnabled ? 'glass-card' : 'bg-muted'}`}>
                 <h3 className="font-semibold mb-2">Order Summary</h3>
                 {cartItems.map(item => (
                   <div key={item.id} className="flex justify-between text-sm mb-1">
@@ -282,10 +161,10 @@ const Checkout = () => {
               </div>
 
               <div className="flex gap-3">
-                <Button onClick={() => navigate('/orders')} variant="outline" className="flex-1">
+                <Button onClick={() => navigate('/orders')} variant="outline" className={`flex-1 ${glassEnabled ? 'glass-button' : ''}`}>
                   View Orders
                 </Button>
-                <Button onClick={() => navigate('/')} className="flex-1">
+                <Button onClick={() => navigate('/')} className={`flex-1 ${glassEnabled ? 'glass-button bg-primary text-primary-foreground' : ''}`}>
                   Continue Shopping
                 </Button>
               </div>
@@ -298,7 +177,7 @@ const Checkout = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className={`min-h-screen bg-background ${glassEnabled ? 'glass-mode' : ''}`}>
       <Helmet>
         <title>Checkout - Dream Snack | Fast Homemade Food Delivery</title>
         <meta name="description" content="Complete your order for fresh homemade food. Multiple payment options including COD, UPI, and Card. Secure checkout with fast 10-minute delivery." />
@@ -317,7 +196,7 @@ const Checkout = () => {
           {/* Main Checkout Form */}
           <div className="lg:col-span-2 space-y-6">
             {/* Delivery Information */}
-            <Card>
+            <Card className={glassEnabled ? 'glass-card' : ''}>
               <CardHeader>
                 <CardTitle>Delivery Information</CardTitle>
                 <CardDescription>Where should we deliver your order?</CardDescription>
@@ -333,6 +212,7 @@ const Checkout = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
+                      className={glassEnabled ? 'glass-input' : ''}
                     />
                   </div>
                   <div className="space-y-2">
@@ -345,6 +225,7 @@ const Checkout = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       required
+                      className={glassEnabled ? 'glass-input' : ''}
                     />
                   </div>
                 </div>
@@ -357,6 +238,7 @@ const Checkout = () => {
                     value={formData.address}
                     onChange={handleInputChange}
                     required
+                    className={glassEnabled ? 'glass-input' : ''}
                   />
                 </div>
                 <div className="space-y-2">
@@ -367,20 +249,21 @@ const Checkout = () => {
                     placeholder="110001"
                     value={formData.pincode}
                     onChange={handleInputChange}
+                    className={glassEnabled ? 'glass-input' : ''}
                   />
                 </div>
               </CardContent>
             </Card>
 
             {/* Payment Method */}
-            <Card>
+            <Card className={glassEnabled ? 'glass-card' : ''}>
               <CardHeader>
                 <CardTitle>Payment Method</CardTitle>
                 <CardDescription>Choose how you want to pay</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <RadioGroup value={paymentMethod} onValueChange={setPaymentMethod}>
-                  <div className="flex items-center space-x-2 p-4 border rounded-lg cursor-pointer hover:bg-accent">
+                  <div className={`flex items-center space-x-2 p-4 border rounded-lg cursor-pointer hover:bg-accent ${glassEnabled ? 'glass-card border-glass-border' : ''}`}>
                     <RadioGroupItem value="cod" id="cod" />
                     <Label htmlFor="cod" className="flex items-center gap-2 cursor-pointer flex-1">
                       <Wallet className="h-5 w-5" />
@@ -392,7 +275,7 @@ const Checkout = () => {
                     <Badge variant="secondary">Popular</Badge>
                   </div>
 
-                  <div className="flex items-center space-x-2 p-4 border rounded-lg cursor-pointer hover:bg-accent">
+                  <div className={`flex items-center space-x-2 p-4 border rounded-lg cursor-pointer hover:bg-accent ${glassEnabled ? 'glass-card border-glass-border' : ''}`}>
                     <RadioGroupItem value="upi" id="upi" />
                     <Label htmlFor="upi" className="flex items-center gap-2 cursor-pointer flex-1">
                       <Smartphone className="h-5 w-5" />
@@ -403,7 +286,7 @@ const Checkout = () => {
                     </Label>
                   </div>
 
-                  <div className="flex items-center space-x-2 p-4 border rounded-lg cursor-pointer hover:bg-accent">
+                  <div className={`flex items-center space-x-2 p-4 border rounded-lg cursor-pointer hover:bg-accent ${glassEnabled ? 'glass-card border-glass-border' : ''}`}>
                     <RadioGroupItem value="card" id="card" />
                     <Label htmlFor="card" className="flex items-center gap-2 cursor-pointer flex-1">
                       <CreditCard className="h-5 w-5" />
@@ -417,7 +300,7 @@ const Checkout = () => {
 
                 {/* UPI Details */}
                 {paymentMethod === 'upi' && (
-                  <div className="space-y-2 mt-4 p-4 bg-muted rounded-lg">
+                  <div className={`space-y-2 mt-4 p-4 rounded-lg ${glassEnabled ? 'glass-card' : 'bg-muted'}`}>
                     <Label htmlFor="upiId">UPI ID</Label>
                     <Input
                       id="upiId"
@@ -425,6 +308,7 @@ const Checkout = () => {
                       placeholder="yourname@upi"
                       value={formData.upiId}
                       onChange={handleInputChange}
+                      className={glassEnabled ? 'glass-input' : ''}
                     />
                     <p className="text-xs text-muted-foreground">
                       Demo: Enter any UPI ID format (e.g., user@paytm)
@@ -434,7 +318,7 @@ const Checkout = () => {
 
                 {/* Card Details */}
                 {paymentMethod === 'card' && (
-                  <div className="space-y-4 mt-4 p-4 bg-muted rounded-lg">
+                  <div className={`space-y-4 mt-4 p-4 rounded-lg ${glassEnabled ? 'glass-card' : 'bg-muted'}`}>
                     <div className="space-y-2">
                       <Label htmlFor="cardNumber">Card Number</Label>
                       <Input
@@ -444,6 +328,7 @@ const Checkout = () => {
                         value={formData.cardNumber}
                         onChange={handleInputChange}
                         maxLength={19}
+                        className={glassEnabled ? 'glass-input' : ''}
                       />
                     </div>
                     <div className="grid grid-cols-2 gap-4">
@@ -456,6 +341,7 @@ const Checkout = () => {
                           value={formData.expiryDate}
                           onChange={handleInputChange}
                           maxLength={5}
+                          className={glassEnabled ? 'glass-input' : ''}
                         />
                       </div>
                       <div className="space-y-2">
@@ -468,6 +354,7 @@ const Checkout = () => {
                           value={formData.cvv}
                           onChange={handleInputChange}
                           maxLength={3}
+                          className={glassEnabled ? 'glass-input' : ''}
                         />
                       </div>
                     </div>
@@ -480,7 +367,7 @@ const Checkout = () => {
             </Card>
 
             {/* Security Info */}
-            <div className="flex items-center gap-2 text-sm text-muted-foreground bg-muted p-4 rounded-lg">
+            <div className={`flex items-center gap-2 text-sm text-muted-foreground p-4 rounded-lg ${glassEnabled ? 'glass-card' : 'bg-muted'}`}>
               <ShieldCheck className="h-5 w-5 text-primary" />
               <p>Your payment information is secure and encrypted. This is a demo checkout.</p>
             </div>
@@ -488,14 +375,14 @@ const Checkout = () => {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <Card className="sticky top-4">
+            <Card className={`sticky top-4 ${glassEnabled ? 'glass-card' : ''}`}>
               <CardHeader>
                 <CardTitle>Order Summary</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {cartItems.map(item => (
                   <div key={item.id} className="flex gap-3">
-                    <div className="h-16 w-16 bg-muted rounded-lg flex items-center justify-center">
+                    <div className={`h-16 w-16 rounded-lg flex items-center justify-center ${glassEnabled ? 'glass-card' : 'bg-muted'}`}>
                       <span className="text-2xl">🍵</span>
                     </div>
                     <div className="flex-1">
@@ -527,9 +414,10 @@ const Checkout = () => {
                 {/* Truck Button for Order Placement */}
                 <div className="flex justify-center">
                   <TruckButton 
-                    glassEnabled={glassEnabled} 
                     onOrderComplete={handlePlaceOrder}
                     disabled={!formData.name || !formData.phone || !formData.address}
+                    buttonText="Place Order"
+                    successText="Order Placed"
                   />
                 </div>
 
