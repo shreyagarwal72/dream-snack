@@ -554,24 +554,24 @@ All colors MUST be HSL.
 /* Truck Button Animation Styles - Reference Implementation */
 .truck-button {
   --color: #fff;
-  --background: #2B3044;
+  --background: hsl(25 60% 35%);
   --tick: #16BF78;
-  --base: #0D0F18;
-  --wheel: #2B3044;
-  --wheel-inner: #646B8C;
+  --base: #1a1510;
+  --wheel: hsl(25 40% 25%);
+  --wheel-inner: hsl(25 30% 50%);
   --wheel-dot: #fff;
-  --back: #6D58FF;
-  --back-inner: #362A89;
-  --back-inner-shadow: #2D246B;
-  --front: #A6ACCD;
-  --front-shadow: #535A79;
+  --back: hsl(25 60% 45%);
+  --back-inner: hsl(25 50% 30%);
+  --back-inner-shadow: hsl(25 45% 25%);
+  --front: hsl(35 40% 70%);
+  --front-shadow: hsl(25 30% 45%);
   --front-light: #FFF8B1;
-  --window: #2B3044;
-  --window-shadow: #404660;
-  --street: #646B8C;
-  --street-fill: #404660;
-  --box: #DCB97A;
-  --box-shadow: #B89B66;
+  --window: hsl(25 40% 25%);
+  --window-shadow: hsl(25 30% 35%);
+  --street: hsl(30 20% 50%);
+  --street-fill: hsl(35 80% 50%);
+  --box: hsl(35 60% 55%);
+  --box-shadow: hsl(35 50% 45%);
   padding: 12px 0;
   width: 172px;
   cursor: pointer;
@@ -587,10 +587,11 @@ All colors MUST be HSL.
   transform-style: preserve-3d;
   transform: rotateX(var(--rx, 0deg)) translateZ(0);
   transition: transform 0.5s, border-radius 0.3s linear var(--br-d, 0s);
+  box-shadow: 0 4px 15px hsl(25 60% 35% / 0.3);
 }
 
 .truck-button:hover {
-  box-shadow: 0 8px 25px rgba(109, 88, 255, 0.3);
+  box-shadow: 0 8px 25px hsl(25 60% 35% / 0.4);
 }
 
 .truck-button:before,
@@ -844,8 +845,30 @@ All colors MUST be HSL.
 
 /* Dark mode truck button */
 .dark .truck-button {
-  --background: #1a1d2e;
-  --base: #0a0c14;
-  --street: #404660;
-  --street-fill: #6D58FF;
+  --background: hsl(222 30% 15%);
+  --base: hsl(222 40% 8%);
+  --wheel: hsl(222 25% 20%);
+  --wheel-inner: hsl(222 20% 40%);
+  --back: hsl(210 60% 50%);
+  --back-inner: hsl(210 50% 35%);
+  --back-inner-shadow: hsl(210 45% 25%);
+  --front: hsl(220 30% 60%);
+  --front-shadow: hsl(220 25% 40%);
+  --window: hsl(222 30% 20%);
+  --window-shadow: hsl(222 25% 30%);
+  --street: hsl(220 20% 35%);
+  --street-fill: hsl(210 80% 60%);
+  --box: hsl(40 70% 55%);
+  --box-shadow: hsl(40 60% 40%);
+  box-shadow: 0 4px 15px hsl(210 60% 50% / 0.3);
+}
+
+.dark .truck-button:hover {
+  box-shadow: 0 8px 25px hsl(210 60% 50% / 0.4);
+}
+
+/* Cursor hide when custom cursor is active */
+.cursor-none,
+.cursor-none * {
+  cursor: none !important;
 }
