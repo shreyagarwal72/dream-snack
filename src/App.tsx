@@ -17,6 +17,7 @@ import { AIAssistant } from "./components/AIAssistant";
 import ScrollProgressBar from "./components/ScrollProgressBar";
 import { GlassProvider } from "./contexts/GlassContext";
 import { GlassBackground } from "./components/GlassBackground";
+import MagneticCursor from "./components/MagneticCursor";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <GlassProvider>
       <TooltipProvider>
+        <MagneticCursor />
         <GlassBackground />
         <ScrollProgressBar />
         <Toaster />
